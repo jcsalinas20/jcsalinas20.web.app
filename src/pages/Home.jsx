@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 
+import Loading from "../components/Loading";
+import Welcome from "../components/Welcome";
+
 class Home extends Component {
     render() {
         return (
             <>
-                <div>
+                {/* <Loading /> */}
+                <Welcome />
+                { /* <div>
                     <p>fondo de estrellas(si puede ser algun efecto del raton)</p>
                     <p>Presentacion ...</p>
                     <p>boton para ir directamente a los proyectos</p>
@@ -34,7 +39,7 @@ class Home extends Component {
                 <br />
                 <div>
                     <p>Contact With Me</p>
-                </div>
+                </div> */ }
             </>
         );
     }
