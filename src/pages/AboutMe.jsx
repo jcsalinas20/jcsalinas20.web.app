@@ -1,4 +1,5 @@
-import { Image, Segment, Grid, Divider, Header, Icon } from "semantic-ui-react";
+import { Image, Segment, Grid, Divider, Header, Icon, Popup } from "semantic-ui-react";
+import mySkills from "../json/mySkills.json";
 
 function AboutMe() {
 
@@ -15,33 +16,65 @@ function AboutMe() {
                         </Divider>
                         <div className="skills-card">
                             <h3 className="subtitle-skills">
-                                <Icon name="language" className="marginr" /> 
+                                <Icon name="language" className="marginr" />
                                 Languages
                                 <div className="arrow-up left-side"></div>
                                 <div className="arrow-up right-side"></div>
                             </h3>
-                            <div>grupo de imagenes</div>
+                            <div className="group-images-skills">
+                                {mySkills.lang.map((skill) => (
+                                    <Popup
+                                        key={skill.name}
+                                        header={skill.name}
+                                        trigger={<Image src={skill.icon} style={{ width: skill.width, height: skill.height, marginRight: (skill.margin) ? "5px" : "0px" }} />}
+                                    />
+                                ))}
+                            </div>
                             <h3 className="subtitle-skills">
-                                <Icon name="connectdevelop" /> 
+                                <Icon name="connectdevelop" />
                                 Frameworks
                                 <div className="arrow-up left-side"></div>
                                 <div className="arrow-up right-side"></div>
                             </h3>
-                            <div>grupo de imagenes</div>
+                            <div className="group-images-skills">
+                                {mySkills.frameworks.map((skill) => (
+                                    <Popup
+                                        key={skill.name}
+                                        header={skill.name}
+                                        trigger={<Image src={skill.icon} style={{ width: skill.width, height: skill.height, marginRight: (skill.margin) ? "5px" : "0px" }} />}
+                                    />
+                                ))}
+                            </div>
                             <h3 className="subtitle-skills">
-                                <Icon name="database" /> 
+                                <Icon name="database" />
                                 Databases
                                 <div className="arrow-up left-side"></div>
                                 <div className="arrow-up right-side"></div>
                             </h3>
-                            <div>grupo de imagenes</div>
+                            <div className="group-images-skills">
+                                {mySkills.db.map((skill) => (
+                                    <Popup
+                                        key={skill.name}
+                                        header={skill.name}
+                                        trigger={<Image src={skill.icon} style={{ width: skill.width, height: skill.height, marginRight: (skill.margin) ? "5px" : "0px" }} />}
+                                    />
+                                ))}
+                            </div>
                             <h3 className="subtitle-skills">
-                                <Icon name="cog" /> 
+                                <Icon name="cog" />
                                 Others
                                 <div className="arrow-up left-side"></div>
                                 <div className="arrow-up right-side"></div>
                             </h3>
-                            <div>grupo de imagenes</div>
+                            <div className="group-images-skills">
+                                {mySkills.others.map((skill) => (
+                                    <Popup
+                                        key={skill.name}
+                                        header={skill.name}
+                                        trigger={<Image src={skill.icon} style={{ width: skill.width, height: skill.height, marginRight: (skill.margin) ? "5px" : "0px" }} />}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </Grid.Column>
                     <Grid.Column>

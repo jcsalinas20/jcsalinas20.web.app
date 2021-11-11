@@ -98,6 +98,14 @@
                 transform: rotate(45deg);
             }
         }
+
+        .group-images-skills {
+            display: flex;
+            align-items: center;
+            // flex-flow: wrap; */
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
     }
 }
 
