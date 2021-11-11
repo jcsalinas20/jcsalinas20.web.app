@@ -12,3 +12,40 @@ body {
   padding: 0;
   position: relative;
   background-color: black; }
+
+.welcome-page {
+  display: flex;
+  flex-flow: wrap column;
+  width: 100vw;
+  height: 100vh;
+  position: absolute; }
+  .welcome-page .background-particles {
+    background: radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+    .welcome-page .background-particles canvas {
+      height: 100vh !important; }
+  .welcome-page .hello {
+    line-height: normal;
+    width: 100%;
+    z-index: 10;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    margin: auto auto 0 auto;
+    text-align: center;
+    text-shadow: 0 0 2px #000;
+    user-select: none; }
+  .welcome-page .text-typed {
+    line-height: normal;
+    width: 100%;
+    z-index: 10;
+    color: white;
+    font-size: 3.2rem;
+    margin: 0 auto auto auto;
+    text-align: center;
+    text-shadow: 0 0 2px #000;
+    user-select: none; }

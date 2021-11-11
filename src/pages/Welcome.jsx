@@ -1,30 +1,35 @@
 import Particles from "react-tsparticles";
-import particleOptions from "./particleOptions.json";
+import particleOptions from "../json/particleOptions.json";
 import Typed from 'react-typed';
+import $ from "jquery";
 
-import "./_welcome.scss";
+import { Button, Transition } from "semantic-ui-react";
+import { useState } from "react";
 
 function Welcome() {
+    const [visible, setVisible] = useState(true);
 
-    const particlesInit = (main) => {
-        console.log(main);
-    };
-
-    const particlesLoaded = (container) => {
-        console.log(container);
-    };
+    function onClickViewMyProjects(e) {
+        console.log("DEVELOPING ;)")
+        setVisible(!visible);
+        $(e.target).css({
+            "animation": "normal 2s anim ease-out"
+        });
+        setTimeout(() => {
+            setVisible(true)
+            $(e.target).removeAttr("style");
+        }, 2001);
+    }
 
     return (
         <div className="welcome-page">
             <div className="background-particles">
                 <Particles
                     id="tsparticles"
-                    init={particlesInit}
-                    loaded={particlesLoaded}
                     options={particleOptions}
                 />
             </div>
-            <p className="hello">Hello, I'm Juan Carlos👋</p>                
+            <p className="hello">Hello, I'm Juan Carlos👋</p>
             <Typed
                 strings={[
                     'Full Stack Developer',
@@ -37,6 +42,7 @@ function Welcome() {
                 loop >
                 <span></span>
             </Typed>
+            <Button className="view-my-projects" content="View My Projects" primary onClick={onClickViewMyProjects}></Button>
         </div>
     );
 };

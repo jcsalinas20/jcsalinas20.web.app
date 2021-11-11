@@ -19,8 +19,9 @@
     }
 
     .hello {
+        line-height: normal;
         width: 100%;
-        z-index: 10;
+        z-index: 1;
         color: white;
         font-size: 4rem;
         font-weight: bold;
@@ -31,13 +32,34 @@
     }
 
     .text-typed {
+        line-height: normal;
         width: 100%;
-        z-index: 10;
+        z-index: 1;
         color: white;
         font-size: 3.2rem;
-        margin: 0 auto auto auto;
+        margin: 0 auto 0 auto;
         text-align: center;
         text-shadow: 0 0 2px #000;
         user-select: none;
+    }
+
+    .view-my-projects {
+        z-index: 1;
+        margin: 3rem auto auto auto !important;
+        height: 43px;
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+@keyframes anim {
+    0% {
+        top: 0px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 500px;
+        opacity: 0.2;
     }
 }
