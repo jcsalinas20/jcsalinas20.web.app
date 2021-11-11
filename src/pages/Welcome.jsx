@@ -13,7 +13,7 @@ function Welcome() {
         console.log("DEVELOPING ;)")
         setVisible(!visible);
         $(e.target).css({
-            "animation": "normal 2s anim ease-out"
+            "animation": "normal 2s hideMyProjectButton ease-out"
         });
         setTimeout(() => {
             setVisible(true)

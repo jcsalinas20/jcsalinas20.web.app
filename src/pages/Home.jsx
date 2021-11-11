@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Welcome from "./Welcome";
+import AboutMe from "./AboutMe";
 
 import "./_home.scss";
 
@@ -9,6 +10,7 @@ class Home extends Component {
         return (
             <>
                 <Welcome />
+                <AboutMe />
             </>
         );
     }
