@@ -3,7 +3,7 @@ import particleOptions from "../json/particleOptions.json";
 import Typed from 'react-typed';
 import $ from "jquery";
 
-import { Button, Transition } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { useState } from "react";
 
 function Welcome() {

@@ -5,7 +5,7 @@ function AboutMe() {
 
     return (
         <div className="about-me">
-            <Segment>
+            <Segment color="teal">
                 <Grid columns={2} relaxed='very'>
                     <Grid.Column>
                         <Divider horizontal>
@@ -79,23 +79,15 @@ function AboutMe() {
                     </Grid.Column>
                     <Grid.Column>
                         <Divider horizontal>
-                            <Header as='h3'>
+                            <Header as='h2'>
                                 <Icon name='address book' />
                                 About Me
                             </Header>
                         </Divider>
-                        <p>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                        </p>
-                        <p>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                        </p>
-                        <p>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                        </p>
-                        <p>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                        </p>
+                        <p>DEVELOPING :)</p>
+                        <p>1: Presentacion</p>
+                        <p>2: Preferencias de progrmacion</p>
+                        <p>3: Experiencia</p>
                     </Grid.Column>
                 </Grid>
 
