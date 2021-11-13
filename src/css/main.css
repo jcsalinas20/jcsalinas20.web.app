@@ -61,7 +61,7 @@ body {
   position: relative;
   z-index: 2;
   background-color: #f5f5f5;
-  padding: 5rem 10rem; }
+  padding: 7rem 12rem; }
   .about-me .skills-card {
     width: 90%;
     padding: 1.5rem 1rem;
@@ -93,6 +93,99 @@ body {
       align-items: center;
       overflow-x: auto;
       padding-bottom: 10px; }
+      .about-me .skills-card .group-images-skills img {
+        user-select: none; }
+
+.git-states {
+  position: relative;
+  z-index: 2;
+  background-color: #f5f5f5;
+  padding: 7rem 12rem; }
+  .git-states .github-card {
+    background-color: #0d1117 !important; }
+    .git-states .github-card h1 {
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 1rem 1rem 1rem;
+      font-weight: bold;
+      color: white; }
+      .git-states .github-card h1 a {
+        color: #0095ff; }
+
+.my-projects {
+  position: relative;
+  z-index: 2;
+  background-color: #f5f5f5;
+  padding: 7rem 10rem; }
+  .my-projects .projects {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-evenly;
+    height: auto;
+    padding: 3rem 1rem !important; }
+    .my-projects .projects .background-particles {
+      background: radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0; }
+      .my-projects .projects .background-particles #tsparticles2 {
+        height: 100%; }
+        .my-projects .projects .background-particles #tsparticles2 canvas {
+          position: relative !important; }
+    .my-projects .projects .ui.card {
+      z-index: 1;
+      width: 350px;
+      height: 380px;
+      margin: 2rem;
+      box-shadow: 0 0 10px 6px black;
+      border: 1px solid white; }
+      .my-projects .projects .ui.card .image {
+        height: 72%; }
+        .my-projects .projects .ui.card .image img {
+          height: 100%; }
+      .my-projects .projects .ui.card .content {
+        position: relative; }
+        .my-projects .projects .ui.card .content .stars {
+          position: absolute;
+          top: 3px;
+          right: 12px; }
+        .my-projects .projects .ui.card .content .description {
+          color: black;
+          font-size: 1.2rem; }
+      .my-projects .projects .ui.card .extra.content {
+        display: flex;
+        flex-flow: wrap row;
+        overflow: auto;
+        padding: 0.4rem;
+        border-top: 1px solid #00000024 !important; }
+        .my-projects .projects .ui.card .extra.content .topic {
+          border: 1px solid #00dcff;
+          color: #00dcff;
+          background-color: #13233ad1;
+          padding: 4px 10px;
+          border-radius: 100px;
+          cursor: default;
+          box-shadow: 0 0 3px 1px black;
+          margin: 3px; }
+
+.loaderBarWave {
+  background: #00000091;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100; }
+  .loaderBarWave .loader-image {
+    margin: auto auto 0 auto; }
+  .loaderBarWave .loader-content {
+    margin: 26px auto auto auto;
+    font-size: 2rem;
+    font-weight: bold; }
 
 @keyframes hideMyProjectButton {
   0% {

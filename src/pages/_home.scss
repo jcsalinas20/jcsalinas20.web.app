@@ -57,7 +57,7 @@
     position: relative;
     z-index: 2;
     background-color: #f5f5f5;
-    padding: 5rem 10rem;
+    padding: 7rem 12rem;
 
     .skills-card {
         // border: 2px solid #bdbdbd;
@@ -105,7 +105,139 @@
             // flex-flow: wrap; */
             overflow-x: auto;
             padding-bottom: 10px;
+
+            img {
+                user-select: none;
+            }
         }
+    }
+}
+
+.git-states {
+    position: relative;
+    z-index: 2;
+    background-color: #f5f5f5;
+    padding: 7rem 12rem;
+
+    .github-card {
+        background-color: #0d1117 !important;
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 1rem 1rem 1rem;
+            font-weight: bold;
+            color: white;
+
+            a {
+                color: #0095ff;
+            }
+        }
+    }
+}
+
+.my-projects {
+    position: relative;
+    z-index: 2;
+    background-color: #f5f5f5;
+    padding: 7rem 10rem;
+
+    .projects {
+        display: flex;
+        flex-flow: wrap row;
+        justify-content: space-evenly;
+        height: auto;
+        padding: 3rem 1rem !important;
+
+        .background-particles {
+            background: radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+            #tsparticles2 {
+                height: 100%;
+
+                canvas {
+                    position: relative !important;
+                }
+            }
+        }
+
+        .ui.card {
+            z-index: 1;
+            width: 350px;
+            height: 380px;
+            margin: 2rem;
+            box-shadow: 0 0 10px 6px black;
+            border: 1px solid white;
+
+            .image {
+                height: 72%;
+
+                img {
+                    height: 100%;
+                }
+            }
+
+            .content {
+                position: relative;
+
+                .stars {
+                    position: absolute;
+                    top: 3px;
+                    right: 12px;
+                }
+
+                .description {
+                    color: black;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .extra.content {
+                display: flex;
+                flex-flow: wrap row;
+                overflow: auto;
+                padding: 0.4rem;
+                border-top: 1px solid #00000024 !important;
+
+                .topic {
+                    border: 1px solid #00dcff;
+                    color: #00dcff;
+                    background-color: #13233ad1;
+                    padding: 4px 10px;
+                    border-radius: 100px;
+                    cursor: default;
+                    box-shadow: 0 0 3px 1px black;
+                    margin: 3px;
+                }
+            }
+        }
+    }
+}
+
+.loaderBarWave {
+    background: #00000091;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+
+    .loader-image {
+        margin: auto auto 0 auto;
+    }
+
+    .loader-content {
+        margin: 26px auto auto auto;
+        font-size: 2rem;
+        font-weight: bold;
     }
 }
 
