@@ -87,6 +87,18 @@ function AboutMe() {
                             </Header>
                         </Divider>
                         <Loading color="white"/>
+                        <p>
+                            <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+                        </p>
+                        <p>
+                            <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+                        </p>
+                        <p>
+                            <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+                        </p>
+                        <p>
+                            <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
+                        </p>
                         {/* <p>DEVELOPING :)</p>
                         <p>1: Presentacion</p>
                         <p>2: Preferencias de progrmacion</p>
