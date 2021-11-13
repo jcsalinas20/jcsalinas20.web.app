@@ -219,6 +219,28 @@
     }
 }
 
+.loaderBarWave {
+    background: #00000091;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+
+    .loader-image {
+        margin: auto auto 0 auto;
+    }
+
+    .loader-content {
+        margin: 26px auto auto auto;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
 @keyframes hideMyProjectButton {
     0% {
         top: 0px;

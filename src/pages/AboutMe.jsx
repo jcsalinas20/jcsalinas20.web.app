@@ -1,5 +1,7 @@
 import { Image, Segment, Grid, Divider, Header, Icon, Popup } from "semantic-ui-react";
+
 import mySkills from "../json/mySkills.json";
+import Loading from "../components/Loading";
 
 function AboutMe() {
 
@@ -84,10 +86,11 @@ function AboutMe() {
                                 About Me
                             </Header>
                         </Divider>
-                        <p>DEVELOPING :)</p>
+                        <Loading color="white"/>
+                        {/* <p>DEVELOPING :)</p>
                         <p>1: Presentacion</p>
                         <p>2: Preferencias de progrmacion</p>
-                        <p>3: Experiencia</p>
+                        <p>3: Experiencia</p> */}
                     </Grid.Column>
                 </Grid>
 
