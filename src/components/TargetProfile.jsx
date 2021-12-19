@@ -11,8 +11,6 @@ function TargetProfile(props) {
     const blog = props.data.blog;
     const twitter = props.data.twitter;
 
-    console.log(props);
-
     return (
         <Popup className="taget-profile" trigger={<a target="_blank" href={url}>{username}</a>} flowing hoverable inverted>
             <Header as='h3'><Image src={avatar} circular />{name}</Header>
