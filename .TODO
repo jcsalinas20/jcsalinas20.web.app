@@ -1,0 +1,12 @@
+# End Points
+- User Details
+    curl https://api.github.com/users/jcsalinas20
+- Get All Repos
+    curl -i https://api.github.com/users/jcsalinas20/repos
+- Get Languages from Repo
+    https://api.github.com/repos/jcsalinas20/personal-web-page/languages
+- Number of stars
+    https://api.github.com/repos/jcsalinas20/Tiktok-downloader/subscribers
+    https://api.github.com/repos/jcsalinas20/personal-web-page (subscribers_count)
+- Get Topics if lang are null
+    https://api.github.com/repos/jcsalinas20/personal-web-page (topics)
