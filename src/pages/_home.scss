@@ -122,7 +122,7 @@
     .github-card {
         background-color: #0d1117 !important;
 
-        h1 {
+        >h1.header {
             display: flex;
             justify-content: center;
             padding: 1.5rem 1rem 1rem 1rem;
@@ -131,6 +131,35 @@
 
             a {
                 color: #0095ff;
+            }
+        }
+
+        >.segments {
+            background-color: #1a1f26 !important;
+            box-shadow: 0 0 10px 4px inset !important;
+            border: 1px solid #0d1117 !important;
+        }
+
+        .main-data {
+            width: 85%;
+            margin: auto !important;
+
+            .data {
+                display: flex;
+                flex-flow: column wrap;
+                align-items: center;
+                justify-content: center;
+                width: 20%;
+                color: white;
+                font-size: 1.4rem;
+                font-weight: bold;
+                text-shadow: 0 0 11px black;
+
+                img {
+                    margin-bottom: 7px;
+                    border: 1px solid white;
+                    box-shadow: 0 0 20px 0 black;
+                }
             }
         }
     }
