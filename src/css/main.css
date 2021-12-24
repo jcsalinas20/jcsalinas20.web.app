@@ -103,14 +103,135 @@ body {
   padding: 7rem 12rem; }
   .git-states .github-card {
     background-color: #0d1117 !important; }
-    .git-states .github-card h1 {
+    .git-states .github-card > h1.header {
       display: flex;
       justify-content: center;
       padding: 1.5rem 1rem 1rem 1rem;
       font-weight: bold;
       color: white; }
-      .git-states .github-card h1 a {
+      .git-states .github-card > h1.header a {
         color: #0095ff; }
+    .git-states .github-card > .segments {
+      background-color: #1a1f26 !important;
+      box-shadow: 0 0 10px 4px inset !important;
+      border: 1px solid #0d1117 !important; }
+    .git-states .github-card .main-data {
+      width: 85%;
+      margin: auto !important; }
+      .git-states .github-card .main-data .data.image {
+        flex-direction: column !important; }
+        .git-states .github-card .main-data .data.image img {
+          margin-bottom: 7px;
+          border: 1px solid white;
+          box-shadow: 0 0 20px 0 black; }
+      .git-states .github-card .main-data .data {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        color: white;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-shadow: 0 0 11px black; }
+    .git-states .github-card .other-data {
+      width: 90%;
+      margin: 1rem auto !important; }
+      .git-states .github-card .other-data .container-arrow {
+        background: #ffffff26;
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10; }
+        .git-states .github-card .other-data .container-arrow button {
+          background-color: transparent;
+          margin: auto;
+          padding: 8px; }
+      .git-states .github-card .other-data .container-arrow:hover {
+        background: #ffffff41; }
+      .git-states .github-card .other-data .container-arrow.left {
+        left: 5px; }
+      .git-states .github-card .other-data .container-arrow.right {
+        right: 5px; }
+      .git-states .github-card .other-data > .segment {
+        width: 50%; }
+        .git-states .github-card .other-data > .segment > h2.title {
+          color: #fff;
+          text-align: center;
+          margin: 0.5rem 0 1rem 0; }
+        .git-states .github-card .other-data > .segment > .ui.list {
+          width: 75%;
+          margin: auto;
+          max-height: 300px;
+          overflow: auto; }
+          .git-states .github-card .other-data > .segment > .ui.list .item {
+            background-color: #ffffffe0;
+            padding: 5px 20px !important;
+            border-radius: 20px;
+            border: 1px solid white;
+            box-shadow: 0 0 10px 2px black;
+            margin: 10px 2px; }
+            .git-states .github-card .other-data > .segment > .ui.list .item .content > .header {
+              color: #4183c4 !important; }
+        .git-states .github-card .other-data > .segment .pie-container {
+          max-width: 450px;
+          max-height: 450px;
+          margin: auto; }
+    .git-states .github-card .other-da {
+      width: 90%;
+      margin: 1rem auto !important; }
+      .git-states .github-card .other-da .container-arrow {
+        background: #ffffff26;
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10; }
+        .git-states .github-card .other-da .container-arrow button {
+          background-color: transparent;
+          margin: auto;
+          padding: 8px; }
+      .git-states .github-card .other-da .container-arrow:hover {
+        background: #ffffff41; }
+      .git-states .github-card .other-da .container-arrow.left {
+        left: 5px; }
+      .git-states .github-card .other-da .container-arrow.right {
+        right: 5px; }
+      .git-states .github-card .other-da > .segment {
+        flex-flow: row wrap;
+        display: flex; }
+        .git-states .github-card .other-da > .segment > h2.title {
+          color: #fff;
+          text-align: center;
+          width: 100%;
+          margin: 0.5rem 0 1rem 0; }
+        .git-states .github-card .other-da > .segment .segment.child {
+          width: 50%; }
+          .git-states .github-card .other-da > .segment .segment.child > .ui.list {
+            width: 75%;
+            margin: auto;
+            max-height: 300px;
+            overflow: auto; }
+            .git-states .github-card .other-da > .segment .segment.child > .ui.list .item {
+              background-color: #ffffffe0;
+              padding: 5px 20px !important;
+              border-radius: 20px;
+              border: 1px solid white;
+              box-shadow: 0 0 10px 2px black;
+              margin: 10px 2px; }
+              .git-states .github-card .other-da > .segment .segment.child > .ui.list .item .content > .header {
+                color: #4183c4 !important; }
+          .git-states .github-card .other-da > .segment .segment.child .pie-container {
+            max-width: 450px;
+            max-height: 450px;
+            margin: auto; }
 
 .my-projects {
   position: relative;
@@ -169,6 +290,17 @@ body {
           cursor: default;
           box-shadow: 0 0 3px 1px black;
           margin: 3px; }
+
+.taget-profile p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: #0095ff; }
+  .taget-profile p a {
+    color: #0095ff; }
+  .taget-profile p b {
+    font-size: 1.2rem;
+    color: #fff;
+    user-select: none; }
 
 .loaderBarWave {
   background: #00000091;
