@@ -12,13 +12,13 @@ function TargetProfile(props) {
     const twitter = props.data.twitter;
 
     return (
-        <Popup className="taget-profile" trigger={<a target="_blank" href={url}>{username}</a>} flowing hoverable inverted>
+        <Popup className="taget-profile" trigger={<a target="_blank" rel="noreferrer" href={url}>{username}</a>} flowing hoverable inverted>
             <Header as='h3'><Image src={avatar} circular />{name}</Header>
             <hr />
             <p><Icon name="map marker alternate" color="green" /><b>Location: </b> {location}</p>
             <p><Icon name="building" color="violet" /><b>Company: </b> {company}</p>
-            <p><Icon name="globe" color="teal" /><b>Blog: </b> <a href="#">{blog}</a></p>
-            <p><Icon name="twitter" color="blue" /><b>Twitter: </b> <a target="_blank" href={"https://twitter.com/" + twitter}>{twitter}</a></p>
+            <p><Icon name="globe" color="teal" /><b>Blog: </b> <a href="/#">{blog}</a></p>
+            <p><Icon name="twitter" color="blue" /><b>Twitter: </b> <a target="_blank" rel="noreferrer" href={"https://twitter.com/" + twitter}>{twitter}</a></p>
         </Popup>
     );
 }

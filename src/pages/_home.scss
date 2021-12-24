@@ -144,9 +144,19 @@
             width: 85%;
             margin: auto !important;
 
+            .data.image {
+                flex-direction: column !important;
+
+                img {
+                    margin-bottom: 7px;
+                    border: 1px solid white;
+                    box-shadow: 0 0 20px 0 black;
+                }
+            }
+
             .data {
                 display: flex;
-                flex-flow: column wrap;
+                flex-direction: row;
                 align-items: center;
                 justify-content: center;
                 width: 20%;
@@ -155,10 +165,153 @@
                 font-weight: bold;
                 text-shadow: 0 0 11px black;
 
-                img {
-                    margin-bottom: 7px;
-                    border: 1px solid white;
-                    box-shadow: 0 0 20px 0 black;
+            }
+        }
+
+        .other-data {
+            width: 90%;
+            margin: 1rem auto !important;
+
+            .container-arrow {
+                background: #ffffff26;
+                position: absolute;
+                top: 5px;
+                bottom: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                z-index: 10;
+
+                button {
+                    background-color: transparent;
+                    margin: auto;
+                    padding: 8px;
+                }
+            }
+
+            .container-arrow:hover {
+                background: #ffffff41;
+            }
+
+            .container-arrow.left {
+                left: 5px;
+            }
+
+            .container-arrow.right {
+                right: 5px;
+            }
+
+            >.segment {
+                width: 50%;
+
+                >h2.title {
+                    color: #fff;
+                    text-align: center;
+                    margin: 0.5rem 0 1rem 0;
+                }
+
+                >.ui.list {
+                    width: 75%;
+                    margin: auto;
+                    max-height: 300px;
+                    overflow: auto;
+
+                    .item {
+                        background-color: #ffffffe0;
+                        padding: 5px 20px !important;
+                        border-radius: 20px;
+                        border: 1px solid white;
+                        box-shadow: 0 0 10px 2px black;
+                        margin: 10px 2px;
+
+                        .content>.header {
+                            color: #4183c4 !important;
+                        }
+                    }
+                }
+
+                .pie-container {
+                    max-width: 450px;
+                    max-height: 450px;
+                    margin: auto;
+                }
+            }
+        }
+
+        .other-da {
+            width: 90%;
+            margin: 1rem auto !important;
+
+            .container-arrow {
+                background: #ffffff26;
+                position: absolute;
+                top: 5px;
+                bottom: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                z-index: 10;
+
+                button {
+                    background-color: transparent;
+                    margin: auto;
+                    padding: 8px;
+                }
+            }
+
+            .container-arrow:hover {
+                background: #ffffff41;
+            }
+
+            .container-arrow.left {
+                left: 5px;
+            }
+
+            .container-arrow.right {
+                right: 5px;
+            }
+
+            >.segment {
+                flex-flow: row wrap;
+                display: flex;
+
+                >h2.title {
+                    color: #fff;
+                    text-align: center;
+                    width: 100%;
+                    margin: 0.5rem 0 1rem 0;
+                }
+
+                .segment.child {
+                    width: 50%;
+
+                    >.ui.list {
+                        width: 75%;
+                        margin: auto;
+                        max-height: 300px;
+                        overflow: auto;
+
+                        .item {
+                            background-color: #ffffffe0;
+                            padding: 5px 20px !important;
+                            border-radius: 20px;
+                            border: 1px solid white;
+                            box-shadow: 0 0 10px 2px black;
+                            margin: 10px 2px;
+
+                            .content>.header {
+                                color: #4183c4 !important;
+                            }
+                        }
+                    }
+
+                    .pie-container {
+                        max-width: 450px;
+                        max-height: 450px;
+                        margin: auto;
+                    }
                 }
             }
         }
