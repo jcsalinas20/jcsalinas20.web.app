@@ -237,9 +237,17 @@
                     margin: auto;
                 }
             }
+
+            >.segment.left-seg {
+                padding: 2rem 0 2rem 4rem;
+            }
+
+            >.segment.right-seg {
+                padding: 2rem 4rem 2rem 0;
+            }
         }
 
-        .other-da {
+        .other-data-part2 {
             width: 90%;
             margin: 1rem auto !important;
 
@@ -281,38 +289,57 @@
                     color: #fff;
                     text-align: center;
                     width: 100%;
-                    margin: 0.5rem 0 1rem 0;
+                    margin: 0;
                 }
 
-                .segment.child {
-                    width: 50%;
+                .segment.child-contributions {
+                    width: 100%;
+                    max-height: 450px;
+                    background-color: #0000;
+                    justify-content: space-evenly;
+                    flex-flow: row wrap;
+                    display: flex;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    margin-top: 0;
 
-                    >.ui.list {
-                        width: 75%;
+                    .subtitle {
+                        width: 100%;
+                        color: white;
+                        text-align: center;
                         margin: auto;
-                        max-height: 300px;
-                        overflow: auto;
-
-                        .item {
-                            background-color: #ffffffe0;
-                            padding: 5px 20px !important;
-                            border-radius: 20px;
-                            border: 1px solid white;
-                            box-shadow: 0 0 10px 2px black;
-                            margin: 10px 2px;
-
-                            .content>.header {
-                                color: #4183c4 !important;
-                            }
-                        }
                     }
 
-                    .pie-container {
-                        max-width: 450px;
-                        max-height: 450px;
+                    article.react-activity-calendar {
+                        background-color: #ffffff;
+                        padding: 15px 30px;
+                        border-radius: 41px;
+                        border: 1px solid #ffffff73;
+                        box-shadow: 0 0 4px 2px black;
+                        width: 60%;
                         margin: auto;
+                    }
+
+                    div.stats {
+                        width: 31%;
+                        margin: auto;
+                    }
+
+                    hr {
+                        width: 84%;
+                        height: 2px;
+                        background-color: #ffffffc4;
+                        margin: 12px auto;
                     }
                 }
+
+                .segment.child-stats {
+                    width: 35%;
+                }
+            }
+
+            >.segment.single-seg {
+                padding: 2rem 4rem;
             }
         }
     }
