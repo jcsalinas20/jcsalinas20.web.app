@@ -13,7 +13,7 @@
 - Organizations
     https://api.github.com/orgs/AWS2
 - Table contributions
-    https://github.com/users/jcsalinas20/contributions?to=2020-12-31
+    https://github-contributions-api.jogruber.de/v4/jcsalinas20?y=2021
 - Get collaborator of repo
     curl -u jcsalinas20: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 https://api.github.com/repos/aleexnl/simon-says/collaborator
 - Releases

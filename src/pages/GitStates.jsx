@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Header, Segment, Icon, Image, List, Popup, Button } from 'semantic-ui-react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { fetchStats } from 'github-contribution-stats';
+import GitHubCalendar from 'react-github-calendar';
+import ReactTooltip from 'react-tooltip';
+// import {} from "parse"
 
 import Loading from "../components/Loading";
 import TargetProfile from "../components/TargetProfile";
@@ -10,6 +12,9 @@ import TargetProfile from "../components/TargetProfile";
 function GitStates() {
     const [user, setUser] = useState({});
     const [orgs, setOrgs] = useState([]);
+    const [svg2020, setSvg2020] = useState("");
+    const [svg2021, setSvg2021] = useState("");
+    const [svg2022, setSvg2022] = useState("");
     const [pieProps, setPieProps] = useState({
         labels: [],
         datasets: [
@@ -39,9 +44,6 @@ function GitStates() {
     }
     ChartJS.register(ArcElement, Tooltip, Legend);
 
-
-    fetchStats('jcsalinas20').then(stats => console.log(stats));
-
     useEffect(() => {
         async function fetchData() {
             setUser(await fetch(`${process.env.REACT_APP_API_DOMAIN}/user/get`)
@@ -51,6 +53,15 @@ function GitStates() {
             setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/orgs/get`)
                 .then((res) => res.json())
                 .then((json) => { return json.orgs }));
+            setSvg2020(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2020/light`)
+                .then(res => res.json())
+                .then((json) => { return json.svg }));
+            setSvg2021(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2021/light`)
+                .then(res => res.json())
+                .then((json) => { return json.svg }));
+            setSvg2022(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2022/light`)
+                .then(res => res.json())
+                .then((json) => { return json.svg }));
         }
         fetchData();
     }, []);
@@ -118,12 +129,7 @@ function GitStates() {
                     </Segment>
                 </Segment.Group>
                 <Segment.Group horizontal raised className="other-data">
-                    <div className="container-arrow left">
-                        <Button secondary icon>
-                            <Icon size="big" name="arrow alternate circle left outline" />
-                        </Button>
-                    </div>
-                    <Segment>
+                    <Segment className="left-seg">
                         <Header as="h2" className="title">Organizations</Header>
                         <List>
                             {orgs.map((org, index) => {
@@ -139,7 +145,7 @@ function GitStates() {
                             })}
                         </List>
                     </Segment>
-                    <Segment>
+                    <Segment className="right-seg">
                         <Header as="h2" className="title">Languages</Header>
                         <div className="pie-container">
                             {(pieProps) ? <Pie data={pieProps} /> : "Loading"}
@@ -153,29 +159,40 @@ function GitStates() {
                 </Segment.Group>
 
 
-                <Segment.Group horizontal raised className="other-da">
+                <Segment.Group horizontal raised className="other-data-part2">
                     <div className="container-arrow left">
                         <Button secondary icon>
                             <Icon size="big" name="arrow alternate circle left outline" />
                         </Button>
                     </div>
-                    <Segment>
-                        <Header as="h2" className="title">Organizations</Header>
-                        <Segment className="child">
-                            {/* <iframe src="https://github.com/users/jcsalinas20/contributions?to=2020-12-31"></iframe> */}
-                        </Segment>
-                        <Segment className="child">
-                            <Header as="h2" className="title">Languages</Header>
-                            <div className="pie-container">
-                                {(pieProps) ? <Pie data={pieProps} /> : "Loading"}
-                            </div>
+                    <Segment className="single-seg">
+                        <Header as="h2" className="title">Stats</Header>
+                        <Segment className="child-contributions">
+                            <Header as='h3' className="subtitle">
+                                <Icon name="calendar alternate outline" />Year: 2022
+                            </Header>
+                            <GitHubCalendar className="contributions" username="jcsalinas20" year={2022} >
+                                <ReactTooltip html />
+                            </GitHubCalendar>
+                            <div className="stats" dangerouslySetInnerHTML={{ __html: svg2022 }}></div>
+                            <hr />
+                            <Header as='h3' className="subtitle">
+                                <Icon name="calendar alternate outline" />Year: 2021
+                            </Header>
+                            <GitHubCalendar className="contributions" username="jcsalinas20" year={2021} >
+                                <ReactTooltip html />
+                            </GitHubCalendar>
+                            <div className="stats" dangerouslySetInnerHTML={{ __html: svg2021 }}></div>
+                            <hr />
+                            <Header as='h3' className="subtitle">
+                                <Icon name="calendar alternate outline" />Year: 2020
+                            </Header>
+                            <GitHubCalendar className="contributions" username="jcsalinas20" year={2020} >
+                                <ReactTooltip html />
+                            </GitHubCalendar>
+                            <div className="stats" dangerouslySetInnerHTML={{ __html: svg2020 }}></div>
                         </Segment>
                     </Segment>
-                    <div className="container-arrow right">
-                        <Button secondary icon>
-                            <Icon size="big" name="arrow alternate circle right outline" />
-                        </Button>
-                    </div>
                 </Segment.Group>
             </Segment>
         </div>
