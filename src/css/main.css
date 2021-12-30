@@ -136,6 +136,7 @@ body {
         text-shadow: 0 0 11px black; }
     .git-states .github-card .other-data {
       width: 90%;
+      min-height: 560px;
       margin: 1rem auto !important; }
       .git-states .github-card .other-data .container-arrow {
         background: #ffffff26;
@@ -181,10 +182,15 @@ body {
           max-width: 450px;
           max-height: 450px;
           margin: auto; }
-    .git-states .github-card .other-da {
+      .git-states .github-card .other-data > .segment.left-seg {
+        padding: 2rem 0 2rem 4rem; }
+      .git-states .github-card .other-data > .segment.right-seg {
+        padding: 2rem 4rem 2rem 0; }
+    .git-states .github-card .other-data-part2 {
       width: 90%;
+      min-height: 560px;
       margin: 1rem auto !important; }
-      .git-states .github-card .other-da .container-arrow {
+      .git-states .github-card .other-data-part2 .container-arrow {
         background: #ffffff26;
         position: absolute;
         top: 5px;
@@ -194,44 +200,61 @@ body {
         align-items: center;
         cursor: pointer;
         z-index: 10; }
-        .git-states .github-card .other-da .container-arrow button {
+        .git-states .github-card .other-data-part2 .container-arrow button {
           background-color: transparent;
           margin: auto;
           padding: 8px; }
-      .git-states .github-card .other-da .container-arrow:hover {
+      .git-states .github-card .other-data-part2 .container-arrow:hover {
         background: #ffffff41; }
-      .git-states .github-card .other-da .container-arrow.left {
+      .git-states .github-card .other-data-part2 .container-arrow.left {
         left: 5px; }
-      .git-states .github-card .other-da .container-arrow.right {
+      .git-states .github-card .other-data-part2 .container-arrow.right {
         right: 5px; }
-      .git-states .github-card .other-da > .segment {
+      .git-states .github-card .other-data-part2 > .segment {
         flex-flow: row wrap;
         display: flex; }
-        .git-states .github-card .other-da > .segment > h2.title {
+        .git-states .github-card .other-data-part2 > .segment > h2.title {
           color: #fff;
           text-align: center;
           width: 100%;
-          margin: 0.5rem 0 1rem 0; }
-        .git-states .github-card .other-da > .segment .segment.child {
-          width: 50%; }
-          .git-states .github-card .other-da > .segment .segment.child > .ui.list {
-            width: 75%;
-            margin: auto;
-            max-height: 300px;
-            overflow: auto; }
-            .git-states .github-card .other-da > .segment .segment.child > .ui.list .item {
-              background-color: #ffffffe0;
-              padding: 5px 20px !important;
-              border-radius: 20px;
-              border: 1px solid white;
-              box-shadow: 0 0 10px 2px black;
-              margin: 10px 2px; }
-              .git-states .github-card .other-da > .segment .segment.child > .ui.list .item .content > .header {
-                color: #4183c4 !important; }
-          .git-states .github-card .other-da > .segment .segment.child .pie-container {
-            max-width: 450px;
-            max-height: 450px;
+          margin: 0;
+          height: 2rem; }
+        .git-states .github-card .other-data-part2 > .segment .segment.child-contributions {
+          width: 100%;
+          max-height: 450px;
+          background-color: #0000;
+          justify-content: space-evenly;
+          flex-flow: row wrap;
+          display: flex;
+          overflow-y: auto;
+          overflow-x: hidden;
+          margin-top: 0;
+          padding-top: 0; }
+          .git-states .github-card .other-data-part2 > .segment .segment.child-contributions .subtitle {
+            width: 100%;
+            color: white;
+            text-align: center;
             margin: auto; }
+          .git-states .github-card .other-data-part2 > .segment .segment.child-contributions article.react-activity-calendar {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 41px;
+            border: 1px solid #ffffff73;
+            box-shadow: 0 0 4px 2px black;
+            width: 60%;
+            margin: auto; }
+          .git-states .github-card .other-data-part2 > .segment .segment.child-contributions div.stats {
+            width: 31%;
+            margin: auto; }
+          .git-states .github-card .other-data-part2 > .segment .segment.child-contributions hr {
+            width: 84%;
+            height: 2px;
+            background-color: #ffffffc4;
+            margin: 0px auto 12px auto; }
+        .git-states .github-card .other-data-part2 > .segment .segment.child-stats {
+          width: 35%; }
+      .git-states .github-card .other-data-part2 > .segment.single-seg {
+        padding: 2rem 4rem; }
 
 .my-projects {
   position: relative;

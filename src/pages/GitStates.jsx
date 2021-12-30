@@ -7,14 +7,17 @@ import ReactTooltip from 'react-tooltip';
 // import {} from "parse"
 
 import Loading from "../components/Loading";
+import Card503 from "../components/Card503";
 import TargetProfile from "../components/TargetProfile";
 
 function GitStates() {
+    const [semaforCarousel, setSemaforCarousel] = useState(true);
     const [user, setUser] = useState({});
     const [orgs, setOrgs] = useState([]);
     const [svg2020, setSvg2020] = useState("");
     const [svg2021, setSvg2021] = useState("");
     const [svg2022, setSvg2022] = useState("");
+    const [error503, setError503] = useState(false);
     const [pieProps, setPieProps] = useState({
         labels: [],
         datasets: [
@@ -48,20 +51,27 @@ function GitStates() {
         async function fetchData() {
             setUser(await fetch(`${process.env.REACT_APP_API_DOMAIN}/user/get`)
                 .then((res) => res.json())
-                .then((json) => { return json.user }));
-
-            setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/orgs/get`)
-                .then((res) => res.json())
-                .then((json) => { return json.orgs }));
-            setSvg2020(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2020/light`)
-                .then(res => res.json())
-                .then((json) => { return json.svg }));
-            setSvg2021(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2021/light`)
-                .then(res => res.json())
-                .then((json) => { return json.svg }));
-            setSvg2022(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2022/light`)
-                .then(res => res.json())
-                .then((json) => { return json.svg }));
+                .then((json) => {
+                    if (json.status) {
+                        setError503(true);
+                        return {};
+                    }
+                    return json.user
+                }));
+            if (!error503) {
+                setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/orgs/get`)
+                    .then((res) => res.json())
+                    .then((json) => { return json.orgs }));
+                setSvg2020(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2020/light`)
+                    .then(res => res.json())
+                    .then((json) => { return json.svg }));
+                setSvg2021(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2021/light`)
+                    .then(res => res.json())
+                    .then((json) => { return json.svg }));
+                setSvg2022(await fetch(`${process.env.REACT_APP_API_DOMAIN}/stats/get/2022/light`)
+                    .then(res => res.json())
+                    .then((json) => { return json.svg }));
+            }
         }
         fetchData();
     }, []);
@@ -128,72 +138,73 @@ function GitStates() {
                         {"Stars: " + user.stars}
                     </Segment>
                 </Segment.Group>
-                <Segment.Group horizontal raised className="other-data">
-                    <Segment className="left-seg">
-                        <Header as="h2" className="title">Organizations</Header>
-                        <List>
-                            {orgs.map((org, index) => {
-                                return (
-                                    <List.Item key={index}>
-                                        <Popup flowing hoverable trigger={<Image src={org.avatar} size="mini" rounded />} content={org.username} />
-                                        <List.Content>
-                                            <List.Header as='label'>{org.name}</List.Header>
-                                            <List.Description as='label'>{org.description}</List.Description>
-                                        </List.Content>
-                                    </List.Item>
-                                );
-                            })}
-                        </List>
-                    </Segment>
-                    <Segment className="right-seg">
-                        <Header as="h2" className="title">Languages</Header>
-                        <div className="pie-container">
-                            {(pieProps) ? <Pie data={pieProps} /> : "Loading"}
-                        </div>
-                    </Segment>
-                    <div className="container-arrow right">
-                        <Button secondary icon>
-                            <Icon size="big" name="arrow alternate circle right outline" />
-                        </Button>
-                    </div>
-                </Segment.Group>
-
-
-                <Segment.Group horizontal raised className="other-data-part2">
-                    <div className="container-arrow left">
-                        <Button secondary icon>
-                            <Icon size="big" name="arrow alternate circle left outline" />
-                        </Button>
-                    </div>
-                    <Segment className="single-seg">
-                        <Header as="h2" className="title">Stats</Header>
-                        <Segment className="child-contributions">
-                            <Header as='h3' className="subtitle">
-                                <Icon name="calendar alternate outline" />Year: 2022
-                            </Header>
-                            <GitHubCalendar className="contributions" username="jcsalinas20" year={2022} >
-                                <ReactTooltip html />
-                            </GitHubCalendar>
-                            <div className="stats" dangerouslySetInnerHTML={{ __html: svg2022 }}></div>
-                            <hr />
-                            <Header as='h3' className="subtitle">
-                                <Icon name="calendar alternate outline" />Year: 2021
-                            </Header>
-                            <GitHubCalendar className="contributions" username="jcsalinas20" year={2021} >
-                                <ReactTooltip html />
-                            </GitHubCalendar>
-                            <div className="stats" dangerouslySetInnerHTML={{ __html: svg2021 }}></div>
-                            <hr />
-                            <Header as='h3' className="subtitle">
-                                <Icon name="calendar alternate outline" />Year: 2020
-                            </Header>
-                            <GitHubCalendar className="contributions" username="jcsalinas20" year={2020} >
-                                <ReactTooltip html />
-                            </GitHubCalendar>
-                            <div className="stats" dangerouslySetInnerHTML={{ __html: svg2020 }}></div>
+                {(semaforCarousel) ?
+                    <Segment.Group horizontal raised className="other-data">
+                        <Segment className="left-seg">
+                            <Header as="h2" className="title">Organizations</Header>
+                            <List>
+                                {orgs.map((org, index) => {
+                                    return (
+                                        <List.Item key={index}>
+                                            <Popup flowing hoverable trigger={<Image src={org.avatar} size="mini" rounded />} content={org.username} />
+                                            <List.Content>
+                                                <List.Header as='label'>{org.name}</List.Header>
+                                                <List.Description as='label'>{org.description}</List.Description>
+                                            </List.Content>
+                                        </List.Item>
+                                    );
+                                })}
+                            </List>
                         </Segment>
-                    </Segment>
-                </Segment.Group>
+                        <Segment className="right-seg">
+                            <Header as="h2" className="title">Languages</Header>
+                            <div className="pie-container">
+                                {(pieProps) ? <Pie data={pieProps} /> : "Loading"}
+                            </div>
+                        </Segment>
+                        <div className="container-arrow right" onClick={() => { setSemaforCarousel(!semaforCarousel) }}>
+                            <Button secondary icon>
+                                <Icon size="big" name="arrow alternate circle right outline" />
+                            </Button>
+                        </div>
+                    </Segment.Group>
+                    :
+                    <Segment.Group horizontal raised className="other-data-part2">
+                        <div className="container-arrow left" onClick={() => { setSemaforCarousel(!semaforCarousel) }}>
+                            <Button secondary icon>
+                                <Icon size="big" name="arrow alternate circle left outline" />
+                            </Button>
+                        </div>
+                        <Segment className="single-seg">
+                            <Header as="h2" className="title">Stats</Header>
+                            <Segment className="child-contributions">
+                                <Header as='h3' className="subtitle">
+                                    <Icon name="calendar alternate outline" />Year: 2022
+                                </Header>
+                                <GitHubCalendar className="contributions" username="jcsalinas20" year={2022} >
+                                    <ReactTooltip html />
+                                </GitHubCalendar>
+                                <div className="stats" dangerouslySetInnerHTML={{ __html: svg2022 }}></div>
+                                <hr />
+                                <Header as='h3' className="subtitle">
+                                    <Icon name="calendar alternate outline" />Year: 2021
+                                </Header>
+                                <GitHubCalendar className="contributions" username="jcsalinas20" year={2021} >
+                                    <ReactTooltip html />
+                                </GitHubCalendar>
+                                <div className="stats" dangerouslySetInnerHTML={{ __html: svg2021 }}></div>
+                                <hr />
+                                <Header as='h3' className="subtitle">
+                                    <Icon name="calendar alternate outline" />Year: 2020
+                                </Header>
+                                <GitHubCalendar className="contributions" username="jcsalinas20" year={2020} >
+                                    <ReactTooltip html />
+                                </GitHubCalendar>
+                                <div className="stats" dangerouslySetInnerHTML={{ __html: svg2020 }}></div>
+                            </Segment>
+                        </Segment>
+                    </Segment.Group>
+                }
             </Segment>
         </div>
     );
