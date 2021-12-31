@@ -260,59 +260,100 @@ body {
   position: relative;
   z-index: 2;
   background-color: #f5f5f5;
-  padding: 7rem 10rem; }
+  padding: 1rem 10rem; }
+  .my-projects .header {
+    display: flex;
+    justify-content: space-between; }
+    .my-projects .header > * {
+      width: 33%; }
+    .my-projects .header .title {
+      margin: auto; }
+    .my-projects .header .search {
+      display: flex; }
+      .my-projects .header .search .ui.input {
+        margin: auto; }
+    .my-projects .header .filter {
+      display: flex; }
+      .my-projects .header .filter .ui.dropdown {
+        font-size: .7em; }
   .my-projects .projects {
     display: flex;
     flex-flow: wrap row;
     justify-content: space-evenly;
     height: auto;
-    padding: 3rem 1rem !important; }
+    padding: 3rem 1rem !important;
+    min-height: 90vh; }
     .my-projects .projects .background-particles {
-      background: radial-gradient(ellipse at bottom, #1b2735 0, #090a0f 100%);
+      background-color: #0093E9;
+      background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
-      right: 0; }
-      .my-projects .projects .background-particles #tsparticles2 {
-        height: 100%; }
-        .my-projects .projects .background-particles #tsparticles2 canvas {
-          position: relative !important; }
-    .my-projects .projects .ui.card {
-      z-index: 1;
-      width: 350px;
-      height: 380px;
-      margin: 2rem;
-      box-shadow: 0 0 10px 6px black;
-      border: 1px solid white; }
-      .my-projects .projects .ui.card .image {
-        height: 72%; }
-        .my-projects .projects .ui.card .image img {
-          height: 100%; }
-      .my-projects .projects .ui.card .content {
-        position: relative; }
-        .my-projects .projects .ui.card .content .stars {
-          position: absolute;
-          top: 3px;
-          right: 12px; }
-        .my-projects .projects .ui.card .content .description {
-          color: black;
-          font-size: 1.2rem; }
-      .my-projects .projects .ui.card .extra.content {
+      right: 0;
+      min-height: 90vh;
+      display: flex;
+      flex-flow: wrap row;
+      justify-content: space-evenly;
+      height: auto;
+      padding: 3rem 1rem !important;
+      overflow: auto; }
+      .my-projects .projects .background-particles .ui.card {
+        z-index: 1;
+        width: 350px;
+        height: 440px;
+        margin: 2rem;
+        box-shadow: 0 0 5px 3px #0037ff75;
+        border: 1px solid white;
         display: flex;
-        flex-flow: wrap row;
-        overflow: auto;
-        padding: 0.4rem;
-        border-top: 1px solid #00000024 !important; }
-        .my-projects .projects .ui.card .extra.content .topic {
-          border: 1px solid #00dcff;
-          color: #00dcff;
-          background-color: #13233ad1;
-          padding: 4px 10px;
-          border-radius: 100px;
-          cursor: default;
-          box-shadow: 0 0 3px 1px black;
-          margin: 3px; }
+        flex-flow: column; }
+        .my-projects .projects .background-particles .ui.card > .image {
+          height: 62%; }
+          .my-projects .projects .background-particles .ui.card > .image > .image {
+            height: 100%; }
+            .my-projects .projects .background-particles .ui.card > .image > .image img {
+              height: 100%;
+              width: 100%; }
+          .my-projects .projects .background-particles .ui.card > .image > p {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            background-color: #ffffff57;
+            box-shadow: 0 0 4px 0 white;
+            padding: 5px 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: system-ui; }
+        .my-projects .projects .background-particles .ui.card .content {
+          position: relative;
+          height: 20%; }
+          .my-projects .projects .background-particles .ui.card .content .stars {
+            position: absolute;
+            top: 3px;
+            right: 12px; }
+          .my-projects .projects .background-particles .ui.card .content .description {
+            color: black;
+            font-size: 1.2rem;
+            margin-top: 5px;
+            height: 40px; }
+        .my-projects .projects .background-particles .ui.card .extra.content {
+          display: flex;
+          flex-flow: wrap row;
+          overflow: auto;
+          padding: 0.4rem;
+          border-top: 1px solid #00000024 !important; }
+          .my-projects .projects .background-particles .ui.card .extra.content .topic {
+            border: 1px solid #00dcff;
+            color: #00dcff;
+            background-color: #13233ad1;
+            padding: 4px 10px;
+            border-radius: 100px;
+            cursor: default;
+            box-shadow: 0 0 3px 1px black;
+            margin: 3px;
+            height: fit-content; }
 
 .taget-profile p {
   margin: 5px 0;
