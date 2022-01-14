@@ -8,7 +8,7 @@ function TargetProfile(props) {
     const avatar = props.data.avatar;
     const location = props.data.location;
     const company = props.data.company;
-    const blog = props.data.blog;
+    const blog = props.data.website;
     const twitter = props.data.twitter;
 
     return (

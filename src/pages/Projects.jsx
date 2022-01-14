@@ -35,8 +35,8 @@ function Projects() {
         fetchData();
     }, []);
 
-    console.log(repos);
-    console.log(collabs);
+    // console.log(repos);
+    // console.log(collabs);
 
     const friendOptions = [
         {
