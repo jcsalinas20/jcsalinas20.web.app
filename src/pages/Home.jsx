@@ -14,7 +14,7 @@ class Home extends Component {
                 <Welcome />
                 <AboutMe />
                 <GitStates />
-                {/* <Projects /> */}
+                <Projects />
             </>
         );
     }

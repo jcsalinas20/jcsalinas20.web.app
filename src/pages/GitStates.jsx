@@ -29,10 +29,10 @@ function GitStates() {
         ],
     });
     ChartJS.register(ArcElement, Tooltip, Legend);
-
+    
     useEffect(() => {
         async function fetchData() {
-            setUser(await fetch(`${process.env.REACT_APP_API_DOMAIN}/jcsalinas20`)
+            setUser(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}`)
                 .then((res) => res.json())
                 .then((json) => {
                     if (json.status) {
@@ -42,10 +42,10 @@ function GitStates() {
                     return json.user;
                 }));
             if (!error503) {
-                setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/jcsalinas20/orgs`)
+                setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/orgs`)
                     .then((res) => res.json())
                     .then((json) => { return json.orgs }));
-                await fetch(`${process.env.REACT_APP_API_DOMAIN}/jcsalinas20/stats`)
+                await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/stats`)
                     .then(res => res.json())
                     .then((json) => {
                         setSvg2020(json.svg[2020]);
@@ -70,7 +70,6 @@ function GitStates() {
                 borders.push(item.color);
             }
         }
-        console.log(names, sizes, colors, borders);
         setPieProps({
             labels: names,
             datasets: [
@@ -83,9 +82,7 @@ function GitStates() {
                 },
             ],
         });
-    }, [user])
-
-    // console.log(user);
+    }, [user]);
 
     return (
         <div className="git-states">

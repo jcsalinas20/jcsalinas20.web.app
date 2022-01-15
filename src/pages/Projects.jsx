@@ -8,12 +8,12 @@ import Loading from "../components/Loading";
 
 function Projects() {
     const [repos, setRepos] = useState([]);
-    const [collabs, setCollabs] = useState([]);
+    const [basicRepos, setBasicRepos] = useState([]);
     const [error503, setError503] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
-            setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/repos/get`)
+            setBasicRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos/basic`)
                 .then((res) => res.json())
                 .then((json) => {
                     if (json.status) {
@@ -24,10 +24,10 @@ function Projects() {
                 })
             );
             if (!error503) {
-                setCollabs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/collabs/get`)
+                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos/basic`)
                     .then((res) => res.json())
                     .then((json) => {
-                        return json.collabs;
+                        return json.repos;
                     })
                 );
             }
@@ -35,8 +35,8 @@ function Projects() {
         fetchData();
     }, []);
 
-    // console.log(repos);
-    // console.log(collabs);
+    // console.log("basic", basicRepos);
+    // console.log("all", repos);
 
     const friendOptions = [
         {
@@ -142,25 +142,11 @@ function Projects() {
                         />
                         : ""
                     } */}
-                    {repos.map((repo, key) => {
+                    {basicRepos.map((repo, key) => {
                         return (
                             <ProjectCard
                                 key={key}
-                                description={repo.description}
-                                stars={repo.stars}
-                                topics={repo.topics}
                                 repo={repo}
-                            />
-                        )
-                    })}
-                    {collabs.map((collab, key) => {
-                        return (
-                            <ProjectCard
-                                key={key}
-                                description={collab.description}
-                                stars={collab.stars}
-                                topics={collab.topics}
-                                repo={collab}
                             />
                         )
                     })}
