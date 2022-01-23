@@ -9,6 +9,7 @@ import Loading from "../components/Loading";
 function Projects() {
     const [repos, setRepos] = useState([]);
     const [basicRepos, setBasicRepos] = useState([]);
+    const [searcher, setSearcher] = useState([]);
     const [error503, setError503] = useState(false);
 
     useEffect(() => {
@@ -20,6 +21,7 @@ function Projects() {
                         setError503(true);
                         return {};
                     }
+                    setSearcher(json.repos);
                     return json.repos;
                 })
             );
@@ -102,6 +104,16 @@ function Projects() {
         { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
     ]
 
+    function handleChangeSearch(e) {
+        let arrayRepos = [];
+        for (const repo of basicRepos) {
+            if (repo.name.toLowerCase().includes(e.target.value.toLowerCase())) {
+                arrayRepos.push(repo);
+            }
+        }
+        setSearcher(arrayRepos);
+    }
+
     return (
         <div className="my-projects">
             <Header as='h1'>
@@ -110,7 +122,7 @@ function Projects() {
                     My Projects
                 </div>
                 <div className="search">
-                    <Input disabled icon="search" iconPosition="left" size="mini" placeholder="Search by name" />
+                    <Input icon="search" iconPosition="left" size="mini" placeholder="Search by name" onChange={handleChangeSearch} />
                 </div>
                 <div className="filter">
                     <Dropdown
@@ -142,7 +154,7 @@ function Projects() {
                         />
                         : ""
                     } */}
-                    {basicRepos.map((repo, key) => {
+                    {searcher.map((repo, key) => {
                         return (
                             <ProjectCard
                                 key={key}

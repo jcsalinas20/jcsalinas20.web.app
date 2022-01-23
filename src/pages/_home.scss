@@ -370,9 +370,16 @@
 
         .search {
             display: flex;
+            margin-top: auto;
 
             .ui.input {
                 margin: auto;
+
+                input {
+                    padding-top: .7rem;
+                    padding-bottom: 0.7rem;
+                    border: 1px solid #999;
+                }
             }
         }
 

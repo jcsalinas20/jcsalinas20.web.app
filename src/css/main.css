@@ -269,9 +269,14 @@ body {
     .my-projects .header .title {
       margin: auto; }
     .my-projects .header .search {
-      display: flex; }
+      display: flex;
+      margin-top: auto; }
       .my-projects .header .search .ui.input {
         margin: auto; }
+        .my-projects .header .search .ui.input input {
+          padding-top: .7rem;
+          padding-bottom: 0.7rem;
+          border: 1px solid #999; }
     .my-projects .header .filter {
       display: flex; }
       .my-projects .header .filter .ui.dropdown {
