@@ -40,44 +40,44 @@ function Projects() {
     // console.log("basic", basicRepos);
     // console.log("all", repos);
 
-    const friendOptions = [
+    const filterOptions = [
         {
-            key: 'Jenny Hess',
-            text: 'Jenny Hess',
-            value: 'Jenny Hess',
-            image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
+            key: "type",
+            text: "Type",
+            value: "type",
         },
         {
-            key: 'Elliot Fu',
-            text: 'Elliot Fu',
-            value: 'Elliot Fu',
-            image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
+            key: "lang",
+            text: "Languages",
+            value: "lang",
         },
         {
-            key: 'Stevie Feliciano',
-            text: 'Stevie Feliciano',
-            value: 'Stevie Feliciano',
-            image: { avatar: true, src: '/images/avatar/small/stevie.jpg' },
+            key: "topics",
+            text: "Topics",
+            value: "topics",
         },
         {
-            key: 'Christian',
-            text: 'Christian',
-            value: 'Christian',
-            image: { avatar: true, src: '/images/avatar/small/christian.jpg' },
+            key: "stars",
+            text: "Stars",
+            value: "stars",
         },
         {
-            key: 'Matt',
-            text: 'Matt',
-            value: 'Matt',
-            image: { avatar: true, src: '/images/avatar/small/matt.jpg' },
+            key: "isarchived",
+            text: "is Archived",
+            value: "isarchived",
         },
         {
-            key: 'Justen Kitsune',
-            text: 'Justen Kitsune',
-            value: 'Justen Kitsune',
-            image: { avatar: true, src: '/images/avatar/small/justen.jpg' },
+            key: "havereleases",
+            text: "Have Releases",
+            value: "havereleases",
         },
-    ]
+        {
+            key: "haveissues",
+            text: "Have Issues",
+            value: "haveissues",
+        },
+    ];
+
     const countryOptions = [
         { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
         { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
@@ -126,11 +126,11 @@ function Projects() {
                 </div>
                 <div className="filter">
                     <Dropdown
-                        disabled
+                        className="filter-selector"
                         placeholder='Select Filter'
                         fluid
                         selection
-                        options={friendOptions}
+                        options={filterOptions}
                     />
                     <Dropdown
                         disabled

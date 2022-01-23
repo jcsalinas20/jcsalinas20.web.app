@@ -280,7 +280,16 @@ body {
     .my-projects .header .filter {
       display: flex; }
       .my-projects .header .filter .ui.dropdown {
-        font-size: .7em; }
+        font-size: .7em;
+        padding-top: .7rem;
+        padding-bottom: 0.7rem;
+        border: 1px solid #999;
+        height: 48px;
+        min-height: auto;
+        display: flex;
+        align-items: center; }
+      .my-projects .header .filter .filter-selector {
+        width: 51%; }
   .my-projects .projects {
     display: flex;
     flex-flow: wrap row;
