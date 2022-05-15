@@ -8,8 +8,10 @@ import Loading from "../components/Loading";
 
 function Projects() {
     const [repos, setRepos] = useState([]);
+    const [filter, setFilter] = useState([]);
     const [basicRepos, setBasicRepos] = useState([]);
     const [searcher, setSearcher] = useState([]);
+    const [selectedFilterType, setSelectedFilterType] = useState("");
     const [error503, setError503] = useState(false);
 
     useEffect(() => {
@@ -26,9 +28,44 @@ function Projects() {
                 })
             );
             if (!error503) {
-                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos/basic`)
+                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos`)
                     .then((res) => res.json())
                     .then((json) => {
+                        for (const repo of json.repos) {
+                            for (const lang of repo.languages) {
+                                let validOption = true;
+                                for (const filter of filterOptions.lang) {
+                                    if (filter.text === lang.name) {
+                                        validOption = false;
+                                        break;
+                                    }
+                                }
+                                if (validOption) {
+                                    filterOptions.lang.push({
+                                        key: lang.name.toLowerCase(),
+                                        text: lang.name,
+                                        value: lang.name.toLowerCase()
+                                    });
+                                }
+                            }
+                            for (const topic of repo.topics) {
+                                let validOption = true;
+                                for (const filter of filterOptions.topics) {
+                                    if (filter.text === topic) {
+                                        validOption = false;
+                                        break;
+                                    }
+                                }
+                                if (validOption) {
+                                    filterOptions.topics.push({
+                                        key: topic.toLowerCase(),
+                                        text: topic,
+                                        value: topic.toLowerCase()
+                                    });
+                                }
+                            }
+                        }
+                        setFilter(filterOptions);
                         return json.repos;
                     })
                 );
@@ -40,7 +77,61 @@ function Projects() {
     // console.log("basic", basicRepos);
     // console.log("all", repos);
 
-    const filterOptions = [
+    let filterOptions = {
+        type: [{
+            key: "owner",
+            text: "Owner",
+            value: "owner"
+        }, {
+            key: "collaborator",
+            text: "Collaborator",
+            value: "collaborator"
+        }, {
+            key: "organization",
+            text: "Organization",
+            value: "organization"
+        }],
+        lang: [],
+        topics: [],
+        stars: [{
+            key: "asc",
+            text: "Asc",
+            value: "asc"
+        }, {
+            key: "desc",
+            text: "Desc",
+            value: "desc"
+        }],
+        isarchived: [{
+            key: "is",
+            text: "Is",
+            value: "is"
+        }, {
+            key: "isnot",
+            text: "Is not",
+            value: "isnot"
+        }],
+        rel: [{
+            key: "hasrel",
+            text: "Has",
+            value: "hasrel"
+        }, {
+            key: "nothasrel",
+            text: "Not has",
+            value: "nothasrel"
+        }],
+        issues: [{
+            key: "has",
+            text: "Has",
+            value: "has"
+        }, {
+            key: "nothasissues",
+            text: "Not has",
+            value: "nothasissues"
+        }]
+    };
+
+    const filterTypeOptions = [
         {
             key: "type",
             text: "Type",
@@ -67,42 +158,16 @@ function Projects() {
             value: "isarchived",
         },
         {
-            key: "havereleases",
-            text: "Have Releases",
-            value: "havereleases",
+            key: "rel",
+            text: "Has Releases",
+            value: "rel",
         },
         {
-            key: "haveissues",
+            key: "issues",
             text: "Have Issues",
-            value: "haveissues",
+            value: "issues",
         },
     ];
-
-    const countryOptions = [
-        { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-        { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
-        { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
-        { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
-        { key: 'as', value: 'as', flag: 'as', text: 'American Samoa' },
-        { key: 'ad', value: 'ad', flag: 'ad', text: 'Andorra' },
-        { key: 'ao', value: 'ao', flag: 'ao', text: 'Angola' },
-        { key: 'ai', value: 'ai', flag: 'ai', text: 'Anguilla' },
-        { key: 'ag', value: 'ag', flag: 'ag', text: 'Antigua' },
-        { key: 'ar', value: 'ar', flag: 'ar', text: 'Argentina' },
-        { key: 'am', value: 'am', flag: 'am', text: 'Armenia' },
-        { key: 'aw', value: 'aw', flag: 'aw', text: 'Aruba' },
-        { key: 'au', value: 'au', flag: 'au', text: 'Australia' },
-        { key: 'at', value: 'at', flag: 'at', text: 'Austria' },
-        { key: 'az', value: 'az', flag: 'az', text: 'Azerbaijan' },
-        { key: 'bs', value: 'bs', flag: 'bs', text: 'Bahamas' },
-        { key: 'bh', value: 'bh', flag: 'bh', text: 'Bahrain' },
-        { key: 'bd', value: 'bd', flag: 'bd', text: 'Bangladesh' },
-        { key: 'bb', value: 'bb', flag: 'bb', text: 'Barbados' },
-        { key: 'by', value: 'by', flag: 'by', text: 'Belarus' },
-        { key: 'be', value: 'be', flag: 'be', text: 'Belgium' },
-        { key: 'bz', value: 'bz', flag: 'bz', text: 'Belize' },
-        { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
-    ]
 
     function handleChangeSearch(e) {
         let arrayRepos = [];
@@ -112,6 +177,22 @@ function Projects() {
             }
         }
         setSearcher(arrayRepos);
+    }
+
+    function onHandleChangeFilterType(e, target) {
+        setSelectedFilterType(target.value);
+    }
+
+    function onHandleChangeFilterOptions(e, target) {
+        let arrayRepos = [];
+        for (const repo of repos) {
+            if (selectedFilterType === "type") {
+                if (target.value.indexOf(repo.type) != -1) {
+                    arrayRepos.push(repo);
+                }
+            }
+        }
+        setSearcher(arrayRepos)
     }
 
     return (
@@ -127,21 +208,38 @@ function Projects() {
                 <div className="filter">
                     <Dropdown
                         className="filter-selector"
-                        placeholder='Select Filter'
+                        placeholder="Select Filter"
                         fluid
                         selection
-                        options={filterOptions}
+                        defaultValue={filterTypeOptions[0]}
+                        onChange={onHandleChangeFilterType}
+                        options={filterTypeOptions}
                     />
-                    <Dropdown
-                        disabled
-                        clearable
-                        fluid
-                        multiple
-                        search
-                        selection
-                        options={countryOptions}
-                        placeholder='Select Country'
-                    />
+                    {
+                        (selectedFilterType === "type" ||
+                            selectedFilterType === "lang" ||
+                            selectedFilterType === "topics") ?
+                            <Dropdown
+                                clearable
+                                fluid
+                                multiple
+                                search
+                                selection
+                                onChange={onHandleChangeFilterOptions}
+                                options={filter[selectedFilterType]}
+                                placeholder="Select Options"
+                            />
+                            :
+                            <Dropdown
+                                clearable
+                                fluid
+                                search
+                                selection
+                                onChange={onHandleChangeFilterOptions}
+                                options={filter[selectedFilterType]}
+                                placeholder="Select Option"
+                            />
+                    }
                 </div>
             </Header>
             <Segment color="blue" className="projects">
@@ -155,12 +253,13 @@ function Projects() {
                         : ""
                     } */}
                     {searcher.map((repo, key) => {
-                        return (
-                            <ProjectCard
-                                key={key}
-                                repo={repo}
-                            />
-                        )
+                        return repo.show ?
+                            (
+                                <ProjectCard
+                                    key={key}
+                                    repo={repo}
+                                />
+                            ) : ""
                     })}
                 </div>
             </Segment>
