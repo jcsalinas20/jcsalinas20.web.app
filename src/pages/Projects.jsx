@@ -185,12 +185,65 @@ function Projects() {
 
     function onHandleChangeFilterOptions(e, target) {
         let arrayRepos = [];
+        console.log(target.value, selectedFilterType);
         for (const repo of repos) {
-            if (selectedFilterType === "type") {
-                if (target.value.indexOf(repo.type) != -1) {
+            if (target.value === "") {
+                arrayRepos.push(repo);
+            } else {
+                if (selectedFilterType === "type") {
+                    if (target.value.indexOf(repo.type) !== -1) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "lang") {
+                    let check = true;
+                    for (const lang of target.value) {
+                        if (!repo.languages.some(item => item.name.toLowerCase() === lang)) {
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "topics") {
+                    let check = true;
+                    console.log(repo);
+                    for (const topic of target.value) {
+                        if (repo.topics.indexOf(topic) === -1) {
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "isarchived") {
+                    if (target.value === "is" && repo.isArchived) {
+                        arrayRepos.push(repo);
+                    } else if (target.value === "isnot" && !repo.isArchived) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "rel") {
+                    if (target.value === "hasrel" && repo.releases.length > 0) {
+                        arrayRepos.push(repo);
+                    } else if (target.value === "nothasrel" && repo.releases.length === 0) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "issues") {
+                    if (target.value === "has" && repo.issues.total > 0) {
+                        arrayRepos.push(repo);
+                    } else if (target.value === "nothasissues" && repo.issues.total === 0) {
+                        arrayRepos.push(repo);
+                    }
+                } else {
                     arrayRepos.push(repo);
                 }
             }
+        }
+        if (selectedFilterType === "stars") {
+            arrayRepos.sort(function (a, b) {
+                return (target.value === "desc") ? a.stars - b.stars : b.stars - a.stars;
+            });
         }
         setSearcher(arrayRepos)
     }
@@ -253,13 +306,12 @@ function Projects() {
                         : ""
                     } */}
                     {searcher.map((repo, key) => {
-                        return repo.show ?
-                            (
-                                <ProjectCard
-                                    key={key}
-                                    repo={repo}
-                                />
-                            ) : ""
+                        return (
+                            <ProjectCard
+                                key={key}
+                                repo={repo}
+                            />
+                        )
                     })}
                 </div>
             </Segment>
