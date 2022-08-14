@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import linesParticlesOptions from "../json/linesParticlesOptions.json";
 import { Header, Segment, Icon, Input, Dropdown } from 'semantic-ui-react';
+import { BarWave } from "react-cssfx-loading";
 
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
@@ -248,6 +249,7 @@ function Projects() {
         setSearcher(arrayRepos)
     }
 
+    console.log()
     return (
         <div className="my-projects">
             <Header as='h1'>
@@ -272,17 +274,31 @@ function Projects() {
                         (selectedFilterType === "type" ||
                             selectedFilterType === "lang" ||
                             selectedFilterType === "topics") ?
-                            <Dropdown
-                                clearable
-                                fluid
-                                multiple
-                                search
-                                selection
-                                onChange={onHandleChangeFilterOptions}
-                                options={filter[selectedFilterType]}
-                                placeholder="Select Options"
-                            />
+                            (filter[selectedFilterType] === undefined) ?
+                                <Dropdown
+                                    loading
+                                    disabled
+                                    clearable
+                                    fluid
+                                    multiple
+                                    search
+                                    selection
+                                    onChange={onHandleChangeFilterOptions}
+                                    options={filter[selectedFilterType]}
+                                    placeholder="Select Options"
+                                />
                             :
+                                <Dropdown
+                                    clearable
+                                    fluid
+                                    multiple
+                                    search
+                                    selection
+                                    onChange={onHandleChangeFilterOptions}
+                                    options={filter[selectedFilterType]}
+                                    placeholder="Select Options"
+                                />
+                        :
                             <Dropdown
                                 clearable
                                 fluid
