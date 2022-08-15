@@ -186,7 +186,6 @@ function Projects() {
 
     function onHandleChangeFilterOptions(e, target) {
         let arrayRepos = [];
-        console.log(target.value, selectedFilterType);
         for (const repo of repos) {
             if (target.value === "") {
                 arrayRepos.push(repo);
@@ -208,7 +207,6 @@ function Projects() {
                     }
                 } else if (selectedFilterType === "topics") {
                     let check = true;
-                    console.log(repo);
                     for (const topic of target.value) {
                         if (repo.topics.indexOf(topic) === -1) {
                             check = false;
@@ -249,7 +247,6 @@ function Projects() {
         setSearcher(arrayRepos)
     }
 
-    console.log()
     return (
         <div className="my-projects">
             <Header as='h1'>
@@ -321,14 +318,45 @@ function Projects() {
                         />
                         : ""
                     } */}
-                    {searcher.map((repo, key) => {
-                        return (
+                    {
+                    (searcher.length === 0) ?
+                        <>
                             <ProjectCard
-                                key={key}
-                                repo={repo}
+                                key={0}
+                                placeholder={true}
                             />
-                        )
-                    })}
+                            <ProjectCard
+                                key={1}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={2}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={3}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={4}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={5}
+                                placeholder={true}
+                            />
+                        </>
+                    :
+                        searcher.map((repo, key) => {
+                            return (
+                                <ProjectCard
+                                    key={key}
+                                    repo={repo}
+                                    placeholder={false}
+                                />
+                            )
+                        })
+                    }
                 </div>
             </Segment>
         </div>
