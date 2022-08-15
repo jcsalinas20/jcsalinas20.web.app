@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import linesParticlesOptions from "../json/linesParticlesOptions.json";
 import { Header, Segment, Icon, Input, Dropdown } from 'semantic-ui-react';
+import { BarWave } from "react-cssfx-loading";
 
 import ProjectCard from "../components/ProjectCard";
 import Loading from "../components/Loading";
 
 function Projects() {
     const [repos, setRepos] = useState([]);
+    const [filter, setFilter] = useState([]);
     const [basicRepos, setBasicRepos] = useState([]);
+    const [searcher, setSearcher] = useState([]);
+    const [selectedFilterType, setSelectedFilterType] = useState("");
     const [error503, setError503] = useState(false);
 
     useEffect(() => {
@@ -20,13 +24,49 @@ function Projects() {
                         setError503(true);
                         return {};
                     }
+                    setSearcher(json.repos);
                     return json.repos;
                 })
             );
             if (!error503) {
-                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos/basic`)
+                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos`)
                     .then((res) => res.json())
                     .then((json) => {
+                        for (const repo of json.repos) {
+                            for (const lang of repo.languages) {
+                                let validOption = true;
+                                for (const filter of filterOptions.lang) {
+                                    if (filter.text === lang.name) {
+                                        validOption = false;
+                                        break;
+                                    }
+                                }
+                                if (validOption) {
+                                    filterOptions.lang.push({
+                                        key: lang.name.toLowerCase(),
+                                        text: lang.name,
+                                        value: lang.name.toLowerCase()
+                                    });
+                                }
+                            }
+                            for (const topic of repo.topics) {
+                                let validOption = true;
+                                for (const filter of filterOptions.topics) {
+                                    if (filter.text === topic) {
+                                        validOption = false;
+                                        break;
+                                    }
+                                }
+                                if (validOption) {
+                                    filterOptions.topics.push({
+                                        key: topic.toLowerCase(),
+                                        text: topic,
+                                        value: topic.toLowerCase()
+                                    });
+                                }
+                            }
+                        }
+                        setFilter(filterOptions);
                         return json.repos;
                     })
                 );
@@ -38,69 +78,174 @@ function Projects() {
     // console.log("basic", basicRepos);
     // console.log("all", repos);
 
-    const friendOptions = [
+    let filterOptions = {
+        type: [{
+            key: "owner",
+            text: "Owner",
+            value: "owner"
+        }, {
+            key: "collaborator",
+            text: "Collaborator",
+            value: "collaborator"
+        }, {
+            key: "organization",
+            text: "Organization",
+            value: "organization"
+        }],
+        lang: [],
+        topics: [],
+        stars: [{
+            key: "asc",
+            text: "Asc",
+            value: "asc"
+        }, {
+            key: "desc",
+            text: "Desc",
+            value: "desc"
+        }],
+        isarchived: [{
+            key: "is",
+            text: "Is",
+            value: "is"
+        }, {
+            key: "isnot",
+            text: "Is not",
+            value: "isnot"
+        }],
+        rel: [{
+            key: "hasrel",
+            text: "Has",
+            value: "hasrel"
+        }, {
+            key: "nothasrel",
+            text: "Not has",
+            value: "nothasrel"
+        }],
+        issues: [{
+            key: "has",
+            text: "Has",
+            value: "has"
+        }, {
+            key: "nothasissues",
+            text: "Not has",
+            value: "nothasissues"
+        }]
+    };
+
+    const filterTypeOptions = [
         {
-            key: 'Jenny Hess',
-            text: 'Jenny Hess',
-            value: 'Jenny Hess',
-            image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
+            key: "type",
+            text: "Type",
+            value: "type",
         },
         {
-            key: 'Elliot Fu',
-            text: 'Elliot Fu',
-            value: 'Elliot Fu',
-            image: { avatar: true, src: '/images/avatar/small/elliot.jpg' },
+            key: "lang",
+            text: "Languages",
+            value: "lang",
         },
         {
-            key: 'Stevie Feliciano',
-            text: 'Stevie Feliciano',
-            value: 'Stevie Feliciano',
-            image: { avatar: true, src: '/images/avatar/small/stevie.jpg' },
+            key: "topics",
+            text: "Topics",
+            value: "topics",
         },
         {
-            key: 'Christian',
-            text: 'Christian',
-            value: 'Christian',
-            image: { avatar: true, src: '/images/avatar/small/christian.jpg' },
+            key: "stars",
+            text: "Stars",
+            value: "stars",
         },
         {
-            key: 'Matt',
-            text: 'Matt',
-            value: 'Matt',
-            image: { avatar: true, src: '/images/avatar/small/matt.jpg' },
+            key: "isarchived",
+            text: "is Archived",
+            value: "isarchived",
         },
         {
-            key: 'Justen Kitsune',
-            text: 'Justen Kitsune',
-            value: 'Justen Kitsune',
-            image: { avatar: true, src: '/images/avatar/small/justen.jpg' },
+            key: "rel",
+            text: "Has Releases",
+            value: "rel",
         },
-    ]
-    const countryOptions = [
-        { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-        { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
-        { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
-        { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
-        { key: 'as', value: 'as', flag: 'as', text: 'American Samoa' },
-        { key: 'ad', value: 'ad', flag: 'ad', text: 'Andorra' },
-        { key: 'ao', value: 'ao', flag: 'ao', text: 'Angola' },
-        { key: 'ai', value: 'ai', flag: 'ai', text: 'Anguilla' },
-        { key: 'ag', value: 'ag', flag: 'ag', text: 'Antigua' },
-        { key: 'ar', value: 'ar', flag: 'ar', text: 'Argentina' },
-        { key: 'am', value: 'am', flag: 'am', text: 'Armenia' },
-        { key: 'aw', value: 'aw', flag: 'aw', text: 'Aruba' },
-        { key: 'au', value: 'au', flag: 'au', text: 'Australia' },
-        { key: 'at', value: 'at', flag: 'at', text: 'Austria' },
-        { key: 'az', value: 'az', flag: 'az', text: 'Azerbaijan' },
-        { key: 'bs', value: 'bs', flag: 'bs', text: 'Bahamas' },
-        { key: 'bh', value: 'bh', flag: 'bh', text: 'Bahrain' },
-        { key: 'bd', value: 'bd', flag: 'bd', text: 'Bangladesh' },
-        { key: 'bb', value: 'bb', flag: 'bb', text: 'Barbados' },
-        { key: 'by', value: 'by', flag: 'by', text: 'Belarus' },
-        { key: 'be', value: 'be', flag: 'be', text: 'Belgium' },
-        { key: 'bz', value: 'bz', flag: 'bz', text: 'Belize' },
-        { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
-    ]
+        {
+            key: "issues",
+            text: "Have Issues",
+            value: "issues",
+        },
+    ];
+
+    function handleChangeSearch(e) {
+        let arrayRepos = [];
+        for (const repo of basicRepos) {
+            if (repo.name.toLowerCase().includes(e.target.value.toLowerCase())) {
+                arrayRepos.push(repo);
+            }
+        }
+        setSearcher(arrayRepos);
+    }
+
+    function onHandleChangeFilterType(e, target) {
+        setSelectedFilterType(target.value);
+    }
+
+    function onHandleChangeFilterOptions(e, target) {
+        let arrayRepos = [];
+        for (const repo of repos) {
+            if (target.value === "") {
+                arrayRepos.push(repo);
+            } else {
+                if (selectedFilterType === "type") {
+                    if (target.value.indexOf(repo.type) !== -1) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "lang") {
+                    let check = true;
+                    for (const lang of target.value) {
+                        if (!repo.languages.some(item => item.name.toLowerCase() === lang)) {
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "topics") {
+                    let check = true;
+                    for (const topic of target.value) {
+                        if (repo.topics.indexOf(topic) === -1) {
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "isarchived") {
+                    if (target.value === "is" && repo.isArchived) {
+                        arrayRepos.push(repo);
+                    } else if (target.value === "isnot" && !repo.isArchived) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "rel") {
+                    if (target.value === "hasrel" && repo.releases.length > 0) {
+                        arrayRepos.push(repo);
+                    } else if (target.value === "nothasrel" && repo.releases.length === 0) {
+                        arrayRepos.push(repo);
+                    }
+                } else if (selectedFilterType === "issues") {
+                    if (target.value === "has" && repo.issues.total > 0) {
+                        arrayRepos.push(repo);
+                    } else if (target.value === "nothasissues" && repo.issues.total === 0) {
+                        arrayRepos.push(repo);
+                    }
+                } else {
+                    arrayRepos.push(repo);
+                }
+            }
+        }
+        if (selectedFilterType === "stars") {
+            arrayRepos.sort(function (a, b) {
+                return (target.value === "desc") ? a.stars - b.stars : b.stars - a.stars;
+            });
+        }
+        setSearcher(arrayRepos)
+    }
 
     return (
         <div className="my-projects">
@@ -110,26 +255,57 @@ function Projects() {
                     My Projects
                 </div>
                 <div className="search">
-                    <Input disabled icon="search" iconPosition="left" size="mini" placeholder="Search by name" />
+                    <Input icon="search" iconPosition="left" size="mini" placeholder="Search by name" onChange={handleChangeSearch} />
                 </div>
                 <div className="filter">
                     <Dropdown
-                        disabled
-                        placeholder='Select Filter'
+                        className="filter-selector"
+                        placeholder="Select Filter"
                         fluid
                         selection
-                        options={friendOptions}
+                        defaultValue={filterTypeOptions[0]}
+                        onChange={onHandleChangeFilterType}
+                        options={filterTypeOptions}
                     />
-                    <Dropdown
-                        disabled
-                        clearable
-                        fluid
-                        multiple
-                        search
-                        selection
-                        options={countryOptions}
-                        placeholder='Select Country'
-                    />
+                    {
+                        (selectedFilterType === "type" ||
+                            selectedFilterType === "lang" ||
+                            selectedFilterType === "topics") ?
+                            (filter[selectedFilterType] === undefined) ?
+                                <Dropdown
+                                    loading
+                                    disabled
+                                    clearable
+                                    fluid
+                                    multiple
+                                    search
+                                    selection
+                                    onChange={onHandleChangeFilterOptions}
+                                    options={filter[selectedFilterType]}
+                                    placeholder="Select Options"
+                                />
+                            :
+                                <Dropdown
+                                    clearable
+                                    fluid
+                                    multiple
+                                    search
+                                    selection
+                                    onChange={onHandleChangeFilterOptions}
+                                    options={filter[selectedFilterType]}
+                                    placeholder="Select Options"
+                                />
+                        :
+                            <Dropdown
+                                clearable
+                                fluid
+                                search
+                                selection
+                                onChange={onHandleChangeFilterOptions}
+                                options={filter[selectedFilterType]}
+                                placeholder="Select Option"
+                            />
+                    }
                 </div>
             </Header>
             <Segment color="blue" className="projects">
@@ -142,14 +318,45 @@ function Projects() {
                         />
                         : ""
                     } */}
-                    {basicRepos.map((repo, key) => {
-                        return (
+                    {
+                    (searcher.length === 0) ?
+                        <>
                             <ProjectCard
-                                key={key}
-                                repo={repo}
+                                key={0}
+                                placeholder={true}
                             />
-                        )
-                    })}
+                            <ProjectCard
+                                key={1}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={2}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={3}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={4}
+                                placeholder={true}
+                            />
+                            <ProjectCard
+                                key={5}
+                                placeholder={true}
+                            />
+                        </>
+                    :
+                        searcher.map((repo, key) => {
+                            return (
+                                <ProjectCard
+                                    key={key}
+                                    repo={repo}
+                                    placeholder={false}
+                                />
+                            )
+                        })
+                    }
                 </div>
             </Segment>
         </div>

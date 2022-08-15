@@ -147,7 +147,7 @@
             .data.image {
                 flex-direction: column !important;
 
-                img {
+                .image {
                     margin-bottom: 7px;
                     border: 1px solid white;
                     box-shadow: 0 0 20px 0 black;
@@ -231,6 +231,15 @@
                             color: #4183c4 !important;
                         }
                     }
+                }
+
+                .pie-loading {
+                    width: 75%;
+                    height: 24rem;
+                    border-radius: 600rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    background-image: linear-gradient(to right, #000000c2 0px, black 15%, black 30%);
                 }
 
                 .pie-container {
@@ -370,9 +379,16 @@
 
         .search {
             display: flex;
+            margin-top: auto;
 
             .ui.input {
                 margin: auto;
+
+                input {
+                    padding-top: .7rem;
+                    padding-bottom: 0.7rem;
+                    border: 1px solid #999;
+                }
             }
         }
 
@@ -381,6 +397,17 @@
 
             .ui.dropdown {
                 font-size: .7em;
+                padding-top: .7rem;
+                padding-bottom: 0.7rem;
+                border: 1px solid #999;
+                height: 48px;
+                min-height: auto;
+                display: flex;
+                align-items: center;
+            }
+
+            .filter-selector {
+                width: 51%;
             }
         }
     }

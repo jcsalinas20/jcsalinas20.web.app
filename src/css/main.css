@@ -120,7 +120,7 @@ body {
       margin: auto !important; }
       .git-states .github-card .main-data .data.image {
         flex-direction: column !important; }
-        .git-states .github-card .main-data .data.image img {
+        .git-states .github-card .main-data .data.image .image {
           margin-bottom: 7px;
           border: 1px solid white;
           box-shadow: 0 0 20px 0 black; }
@@ -178,6 +178,13 @@ body {
             margin: 10px 2px; }
             .git-states .github-card .other-data > .segment > .ui.list .item .content > .header {
               color: #4183c4 !important; }
+        .git-states .github-card .other-data > .segment .pie-loading {
+          width: 75%;
+          height: 24rem;
+          border-radius: 600rem;
+          margin-left: auto;
+          margin-right: auto;
+          background-image: linear-gradient(to right, #000000c2 0px, black 15%, black 30%); }
         .git-states .github-card .other-data > .segment .pie-container {
           max-width: 450px;
           max-height: 450px;
@@ -269,13 +276,27 @@ body {
     .my-projects .header .title {
       margin: auto; }
     .my-projects .header .search {
-      display: flex; }
+      display: flex;
+      margin-top: auto; }
       .my-projects .header .search .ui.input {
         margin: auto; }
+        .my-projects .header .search .ui.input input {
+          padding-top: .7rem;
+          padding-bottom: 0.7rem;
+          border: 1px solid #999; }
     .my-projects .header .filter {
       display: flex; }
       .my-projects .header .filter .ui.dropdown {
-        font-size: .7em; }
+        font-size: .7em;
+        padding-top: .7rem;
+        padding-bottom: 0.7rem;
+        border: 1px solid #999;
+        height: 48px;
+        min-height: auto;
+        display: flex;
+        align-items: center; }
+      .my-projects .header .filter .filter-selector {
+        width: 51%; }
   .my-projects .projects {
     display: flex;
     flex-flow: wrap row;
