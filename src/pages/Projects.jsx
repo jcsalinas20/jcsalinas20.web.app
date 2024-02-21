@@ -17,7 +17,9 @@ function Projects() {
 
     useEffect(() => {
         async function fetchData() {
-            setBasicRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos/basic`)
+            setBasicRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos/basic`, {
+                headers: { Authorization: `${process.env.REACT_APP_JWT_API}` }
+            })
                 .then((res) => res.json())
                 .then((json) => {
                     if (json.status) {
@@ -29,7 +31,9 @@ function Projects() {
                 })
             );
             if (!error503) {
-                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos`)
+                setRepos(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/repos`, {
+                    headers: { Authorization: `${process.env.REACT_APP_JWT_API}` }
+                })
                     .then((res) => res.json())
                     .then((json) => {
                         for (const repo of json.repos) {
@@ -248,7 +252,7 @@ function Projects() {
     }
 
     return (
-        <div className="my-projects">
+        <div className="my-projects" id="projects">
             <Header as='h1'>
                 <div className="title">
                     <Icon name='github' />

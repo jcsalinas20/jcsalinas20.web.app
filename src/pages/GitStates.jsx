@@ -4,6 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import GitHubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
+import moment from "moment";
 
 import Loading from "../components/Loading";
 import Card503 from "../components/Card503";
@@ -13,9 +14,10 @@ function GitStates() {
     const [semaforCarousel, setSemaforCarousel] = useState(true);
     const [user, setUser] = useState({});
     const [orgs, setOrgs] = useState([]);
-    const [svg2020, setSvg2020] = useState("");
-    const [svg2021, setSvg2021] = useState("");
-    const [svg2022, setSvg2022] = useState("");
+    const [yearsSvg, setYearsSvg] = useState({});
+    // const [svg2020, setSvg2020] = useState("");
+    // const [svg2021, setSvg2021] = useState("");
+    // const [svg2022, setSvg2022] = useState("");
     const [error503, setError503] = useState(false);
     const [pieProps, setPieProps] = useState({
         labels: [],
@@ -29,10 +31,12 @@ function GitStates() {
         ],
     });
     ChartJS.register(ArcElement, Tooltip, Legend);
-    
+
     useEffect(() => {
         async function fetchData() {
-            setUser(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}`)
+            setUser(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}`, {
+                headers: { Authorization: `${process.env.REACT_APP_JWT_API}` }
+            })
                 .then((res) => res.json())
                 .then((json) => {
                     if (json.status) {
@@ -42,18 +46,28 @@ function GitStates() {
                     return json.user;
                 }));
             if (!error503) {
-                setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/orgs`)
+                setOrgs(await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/orgs`, {
+                    headers: { Authorization: `${process.env.REACT_APP_JWT_API}` }
+                })
                     .then((res) => res.json())
                     .then((json) => { return json.orgs }));
-                await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/stats`)
+                await fetch(`${process.env.REACT_APP_API_DOMAIN}/${process.env.REACT_APP_GIT_USER}/stats`, {
+                    headers: { Authorization: `${process.env.REACT_APP_JWT_API}` }
+                })
                     .then(res => res.json())
                     .then((json) => {
-                        setSvg2020(json.svg[2020]);
-                        setSvg2021(json.svg[2021]); 
-                        setSvg2022(json.svg[2022]);
+                        setYearsSvg(json.svg);
                     });
             }
         }
+        
+        const startYear = 2020;
+        const endYear = moment().year();
+    
+        for(var year = startYear; year <= endYear; year++) {
+            yearsSvg[year] = "";
+        }
+
         fetchData();
     }, []);
 
@@ -221,7 +235,40 @@ function GitStates() {
                         <Segment className="single-seg">
                             <Header as="h2" className="title">Stats</Header>
                             <Segment className="child-contributions">
-                                <Header as='h3' className="subtitle">
+                                {
+                                    Object.keys(yearsSvg).map((year, i) => {
+                                        return (
+                                        <>                                
+                                            <Header as='h3' className="subtitle">
+                                                <Icon name="calendar alternate outline" />Year: {year}
+                                            </Header>
+                                            <GitHubCalendar className="contributions" username="jcsalinas20" year={year} >
+                                                <ReactTooltip html />
+                                            </GitHubCalendar>
+                                            { (yearsSvg[year]) ? <div className="stats" dangerouslySetInnerHTML={{ __html: yearsSvg[year] }}></div> 
+                                            : 
+                                            <div className="stats">
+                                                <Placeholder style={{width: "381px", height: "175px", margin: "15px 0", borderRadius: "10px"}}>
+                                                    <Placeholder.Image rectangular active />
+                                                </Placeholder>
+                                            </div>
+                                            }
+                                        </>
+                                        );
+                                    })
+                                }
+                                {/* <GitHubCalendar className="contributions" username="jcsalinas20" year={2022} >
+                                    <ReactTooltip html />
+                                </GitHubCalendar>
+                                {(svg2022) ? <div className="stats" dangerouslySetInnerHTML={{ __html: svg2022 }}></div>
+                                :
+                                <div className="stats">
+                                    <Placeholder style={{width: "381px", height: "175px", margin: "15px 0", borderRadius: "10px"}}>
+                                        <Placeholder.Image rectangular active />
+                                    </Placeholder>
+                                </div>
+                                } */}
+                                {/*<Header as='h3' className="subtitle">
                                     <Icon name="calendar alternate outline" />Year: 2022
                                 </Header>
                                 <GitHubCalendar className="contributions" username="jcsalinas20" year={2022} >
@@ -264,7 +311,7 @@ function GitStates() {
                                         <Placeholder.Image rectangular active />
                                     </Placeholder>
                                 </div>
-                                }
+                                }*/}
                             </Segment>
                         </Segment>
                     </Segment.Group>

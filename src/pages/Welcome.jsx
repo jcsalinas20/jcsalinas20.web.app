@@ -10,15 +10,15 @@ function Welcome() {
     const [visible, setVisible] = useState(true);
 
     function onClickViewMyProjects(e) {
-        console.log("DEVELOPING ;)")
+        document.getElementById("projects").scrollIntoView({top: 0, left: 0, behavior: 'smooth' });
         setVisible(!visible);
         $(e.target).css({
-            "animation": "normal 2s hideMyProjectButton ease-out"
+            "animation": "normal .4s hideMyProjectButton ease-out"
         });
         setTimeout(() => {
             setVisible(true)
             $(e.target).removeAttr("style");
-        }, 2001);
+        }, 501);
     }
 
     return (
