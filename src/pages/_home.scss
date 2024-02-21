@@ -445,6 +445,7 @@
                 border: 1px solid white;
                 display: flex;
                 flex-flow: column;
+                transition: .4s;
 
                 >.image {
                     height: 62%;
@@ -510,6 +511,11 @@
                         height: fit-content;
                     }
                 }
+            }
+            
+            .ui.card:hover {
+                width: 375px !important;
+                height: 465px !important;
             }
         }
     }
