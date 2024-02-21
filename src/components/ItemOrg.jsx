@@ -1,9 +1,5 @@
-
 function ItemOrgs(props) {
-
-    return(
-        <></>
-    )
+  return <></>;
 }
 
 export default ItemOrgs;

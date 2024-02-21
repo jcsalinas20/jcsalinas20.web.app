@@ -1,0 +1,19 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[javascript]": {
+    "editor.maxTokenizationLineLength": 2500
+  },
+  "[css]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.colorDecorators": true,
+    "editor.foldingStrategy": "indentation"
+  },
+  "css.lint.duplicateProperties": "warning",
+  "css.lint.emptyRules": "warning",
+  "prettier.printWidth": 150
+}

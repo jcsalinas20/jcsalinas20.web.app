@@ -1,7 +1,7 @@
 function Topic(props) {
-    const name = props.name;
+  const name = props.name;
 
-    return <span className="topic">{name}</span>;
+  return <span className="topic">{name}</span>;
 }
 
 export default Topic;

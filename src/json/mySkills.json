@@ -1,211 +1,213 @@
 {
-    "lang": [
-        {
-            "name": "Java",
-            "width": "65px",
-            "height": "65px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/java.png"
-        },
-        {
-            "name": "HTML",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/html.png"
-        },
-        {
-            "name": "CSS",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/css.png"
-        },
-        {
-            "name": "Javascript",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/javascript.png"
-        },
-        {
-            "name": "PHP",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/php.png"
-        },
-        {
-            "name": "PL\\SQL",
-            "width": "70px",
-            "height": "70px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/plsql.png"
-        },
-        {
-            "name": "Python",
-            "width": "70px",
-            "height": "66px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/python.png"
-        },
-        {
-            "name": "JSON",
-            "width": "70px",
-            "height": "70px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/json.png"
-        },
-        {
-            "name": "XML",
-            "width": "70px",
-            "height": "70px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/xml.png"
-        }
-    ],
-    "frameworks": [
-        {
-            "name": "Java Swing",
-            "width": "65px",
-            "height": "65px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/javaswing.png"
-        },
-        {
-            "name": "Java FX",
-            "width": "60px",
-            "height": "56px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/javafx.png"
-        },
-        {
-            "name": "Spring Boot",
-            "width": "60px",
-            "height": "59px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/springboot.png"
-        },
-        {
-            "name": "Android Studio",
-            "width": "60px",
-            "height": "60px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/androidstudio.png"
-        },
-        {
-            "name": "Laravel",
-            "width": "60px",
-            "height": "60px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/laravel.png"
-        },
-        {
-            "name": "React JS",
-            "width": "60px",
-            "height": "73px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/react.png"
-        },
-        {
-            "name": "Node JS",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/nodejs.png"
-        },
-        {
-            "name": "Apache Cordova",
-            "width": "60px",
-            "height": "68px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/apachecordova.png"
-        },
-        {
-            "name": "JQuery",
-            "width": "60px",
-            "height": "64px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/jquery.png"
-        },
-        {
-            "name": "Bootstrap",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/bootstrap.png"
-        },
-        {
-            "name": "Node Sass",
-            "width": "60px",
-            "height": "60px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/sass.png"
-        },
-        {
-            "name": "Semantic UI",
-            "width": "60px",
-            "height": "60px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/semanticui.png"
-        }
-    ],
-    "db": [
-        {
-            "name": "MongoDB",
-            "width": "60px",
-            "height": "60px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/mongodb.png"
-        },
-        {
-            "name": "MySQL",
-            "width": "70px",
-            "height": "70px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/mysql.png"
-        },
-        {
-            "name": "Oracle SQL",
-            "width": "70px",
-            "height": "70px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/oracle.png"
-        },
-        {
-            "name": "PhpMyAdmin",
-            "width": "80px",
-            "height": "57px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/phpmyadmin.png"
-        }],
-    "others": [
-        {
-            "name": "Git & GitHub",
-            "width": "50px",
-            "height": "50px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/git.png"
-        },
-        {
-            "name": "IntelliJ IDEA",
-            "width": "50px",
-            "height": "50px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/intellij.png"
-        },
-        {
-            "name": "Eclipse",
-            "width": "50px",
-            "height": "47px",
-            "margin": true,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/eclipse.png"
-        },
-        {
-            "name": "Visual Studio Code",
-            "width": "50px",
-            "height": "50px",
-            "margin": false,
-            "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/vscode.png"
-        }]
+  "lang": [
+    {
+      "name": "Java",
+      "width": "65px",
+      "height": "65px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/java.png"
+    },
+    {
+      "name": "HTML",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/html.png"
+    },
+    {
+      "name": "CSS",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/css.png"
+    },
+    {
+      "name": "Javascript",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/javascript.png"
+    },
+    {
+      "name": "PHP",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/php.png"
+    },
+    {
+      "name": "PL\\SQL",
+      "width": "70px",
+      "height": "70px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/plsql.png"
+    },
+    {
+      "name": "Python",
+      "width": "70px",
+      "height": "66px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/python.png"
+    },
+    {
+      "name": "JSON",
+      "width": "70px",
+      "height": "70px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/json.png"
+    },
+    {
+      "name": "XML",
+      "width": "70px",
+      "height": "70px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/languages/xml.png"
+    }
+  ],
+  "frameworks": [
+    {
+      "name": "Java Swing",
+      "width": "65px",
+      "height": "65px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/javaswing.png"
+    },
+    {
+      "name": "Java FX",
+      "width": "60px",
+      "height": "56px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/javafx.png"
+    },
+    {
+      "name": "Spring Boot",
+      "width": "60px",
+      "height": "59px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/springboot.png"
+    },
+    {
+      "name": "Android Studio",
+      "width": "60px",
+      "height": "60px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/androidstudio.png"
+    },
+    {
+      "name": "Laravel",
+      "width": "60px",
+      "height": "60px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/laravel.png"
+    },
+    {
+      "name": "React JS",
+      "width": "60px",
+      "height": "73px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/react.png"
+    },
+    {
+      "name": "Node JS",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/nodejs.png"
+    },
+    {
+      "name": "Apache Cordova",
+      "width": "60px",
+      "height": "68px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/apachecordova.png"
+    },
+    {
+      "name": "JQuery",
+      "width": "60px",
+      "height": "64px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/jquery.png"
+    },
+    {
+      "name": "Bootstrap",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/bootstrap.png"
+    },
+    {
+      "name": "Node Sass",
+      "width": "60px",
+      "height": "60px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/sass.png"
+    },
+    {
+      "name": "Semantic UI",
+      "width": "60px",
+      "height": "60px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/frameworks/semanticui.png"
+    }
+  ],
+  "db": [
+    {
+      "name": "MongoDB",
+      "width": "60px",
+      "height": "60px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/mongodb.png"
+    },
+    {
+      "name": "MySQL",
+      "width": "70px",
+      "height": "70px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/mysql.png"
+    },
+    {
+      "name": "Oracle SQL",
+      "width": "70px",
+      "height": "70px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/oracle.png"
+    },
+    {
+      "name": "PhpMyAdmin",
+      "width": "80px",
+      "height": "57px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/databases/phpmyadmin.png"
+    }
+  ],
+  "others": [
+    {
+      "name": "Git & GitHub",
+      "width": "50px",
+      "height": "50px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/git.png"
+    },
+    {
+      "name": "IntelliJ IDEA",
+      "width": "50px",
+      "height": "50px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/intellij.png"
+    },
+    {
+      "name": "Eclipse",
+      "width": "50px",
+      "height": "47px",
+      "margin": true,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/eclipse.png"
+    },
+    {
+      "name": "Visual Studio Code",
+      "width": "50px",
+      "height": "50px",
+      "margin": false,
+      "icon": "https://raw.githubusercontent.com/jcsalinas20/jcsalinas20/main/images/others/vscode.png"
+    }
+  ]
 }

@@ -8,16 +8,16 @@ import Projects from "./Projects";
 import "./_home.scss";
 
 class Home extends Component {
-    render() {
-        return (
-            <>
-                <Welcome />
-                <AboutMe />
-                <GitStates />
-                <Projects />
-            </>
-        );
-    }
+  render() {
+    return (
+      <>
+        <Welcome />
+        <AboutMe />
+        <GitStates />
+        <Projects />
+      </>
+    );
+  }
 }
 
 export default Home;

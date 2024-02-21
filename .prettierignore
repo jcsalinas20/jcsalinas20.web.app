@@ -1,0 +1,5 @@
+build
+app
+node_modules
+coverage
+*.css

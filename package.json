@@ -32,6 +32,8 @@
     "scss": "node-sass --watch ./src/scss -o ./src/css",
     "build": "react-scripts build && rm -rf ./app && mv ./build ./app",
     "firebase": "firebase deploy --only hosting:jcsalinas20",
+    "format": "npx prettier --write .",
+    "check_format": "npx prettier --check .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
